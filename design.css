@@ -9,8 +9,8 @@
   --amf-gray: #6B7280;
   --amf-light-gray: #DDE2EA;
 
-    --amf-point: #FFD400;
-    --amf-point-text: #8A6900;
+    --amf-point: #193266;
+    --amf-point-text: #193266;
     --amf-brand-dark: #132848;
     --amf-brand-soft: #EEF1F7;
 
@@ -825,7 +825,7 @@ img {
   margin-top: 65px;
   padding: 17px 24px;
   background: var(--amf-point);
-  color: var(--amf-black);
+  color: #fff;
   font-size: 13px;
 }
 
@@ -1010,11 +1010,11 @@ img {
 .amf-social-links a:hover {
   border-color: var(--amf-point);
   background: var(--amf-point);
-  color: var(--amf-black);
+  color: #fff;
 }
 
 .amf-social-links a:hover span {
-  color: var(--amf-black);
+  color: #fff;
 }
 
 .amf-review-grid {
