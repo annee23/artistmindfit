@@ -1265,16 +1265,16 @@ img {
 
   .amf-hero {
     min-height: auto;
-    padding: 90px 22px 70px;
+    padding: 110px 22px 60px;
   }
 
   .amf-hero-inner {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    gap: 56px;
+    justify-content: flex-start;
+    gap: 36px;
     align-items: stretch;
-    min-height: calc(100svh - 150px);
+    min-height: auto;
   }
 
   .amf-eyebrow {
@@ -1291,17 +1291,14 @@ img {
   }
 
   .amf-hero-media {
+    position: relative;
     width: 100%;
-    height: 56%;
+    height: auto;
+    aspect-ratio: 4 / 3;
     top: auto;
-    right: 0;
-    bottom: 0;
+    right: auto;
+    bottom: auto;
     align-self: auto;
-  }
-
-  .amf-hero {
-    background-position: right bottom;
-    background-size: auto 62%;
   }
 
   .amf-section {
