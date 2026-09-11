@@ -84,9 +84,12 @@ img {
   white-space: nowrap;
 }
 
-.amf-brand-mark span,
-.amf-footer-brand span {
+.amf-brand-mark span {
   color: var(--amf-point-text);
+}
+
+.amf-footer-brand span {
+  color: var(--amf-black);
 }
 
 .amf-site-nav {
