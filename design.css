@@ -1076,6 +1076,22 @@ img {
   border-top: 1px solid rgba(23,23,23,.12);
 }
 
+.amf-slogan-inner {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.amf-slogan-inner .amf-section-title {
+  margin-top: 30px;
+  line-height: 1.6;
+}
+
+.amf-slogan-inner .amf-section-description {
+  margin-top: 26px;
+  line-height: 2;
+}
+
 .amf-story-copy {
   max-width: 720px;
   margin: 42px 0 0 auto;
