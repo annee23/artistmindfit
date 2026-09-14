@@ -1,12 +1,17 @@
 (() => {
   const footerInner = document.querySelector('.amf-footer-inner');
-  if (!footerInner || footerInner.querySelector('.amf-footer-social')) return;
+  if (!footerInner) return;
+
+  footerInner.querySelectorAll('.amf-footer-social').forEach((block) => block.remove());
+
+  const footerNav = footerInner.querySelector('.amf-footer-nav');
+  if (footerNav) {
+    footerNav.innerHTML = '<a href="/about/">소개</a><a href="/programs/">프로그램</a><a href="/reviews/">강의 후기</a><a href="/notice/">공지</a>';
+  }
 
   const social = document.createElement('div');
   social.className = 'amf-footer-social';
   social.innerHTML = `
-    <div class="amf-social-title">Artist Mind Fit<br><em>connects.</em></div>
-    <div class="amf-social-handle">예술가를 위한 심리교육 기획사 · @artistmindfit_</div>
     <div class="amf-footer-social-links">
       <a href="https://www.instagram.com/artistmindfit_/" target="_blank" rel="noopener">Instagram ↗</a>
       <a href="https://pf.kakao.com/_CSBGG" target="_blank" rel="noopener">카카오톡 채널 ↗</a>
