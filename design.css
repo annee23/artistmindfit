@@ -1773,7 +1773,7 @@ img {
 
 .amf-footer-inner {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 1.4fr 2fr 1fr 1fr;
   gap: 40px;
   max-width: var(--amf-max-width);
   margin: 0 auto;
@@ -2323,6 +2323,10 @@ img {
   }
 
   .amf-footer-inner > div:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .amf-footer-social {
     grid-column: 1 / -1;
   }
 
