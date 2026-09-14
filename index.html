@@ -163,5 +163,18 @@
     </div>
   </footer>
 
+  <script>
+    const heroMedia = document.querySelector('.amf-hero-media');
+    const heroSlides = heroMedia ? heroMedia.querySelectorAll('.amf-hero-slides img') : [];
+
+    if (heroMedia && heroSlides.length > 1) {
+      let heroSlideIndex = 0;
+      window.setInterval(() => {
+        heroSlideIndex = (heroSlideIndex + 1) % heroSlides.length;
+        heroMedia.classList.toggle('has-overlay', heroSlideIndex === 1);
+      }, 6000);
+    }
+  </script>
+
 </body>
 </html>

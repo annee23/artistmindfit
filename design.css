@@ -387,7 +387,13 @@ img {
   inset: 0;
   z-index: 1;
   background: linear-gradient(90deg, rgba(12, 22, 38, .72) 0%, rgba(12, 22, 38, .34) 48%, rgba(12, 22, 38, .18) 100%);
+  opacity: 0;
+  transition: opacity .35s ease;
   pointer-events: none;
+}
+
+.amf-hero-media.has-overlay::after {
+  opacity: 1;
 }
 
 .amf-hero-brand-overlay {
