@@ -1438,6 +1438,44 @@ img {
   border-top: 1px solid rgba(23,23,23,.12);
 }
 
+.amf-landing-navy {
+  background: #10243f;
+  color: #fff;
+}
+
+.amf-landing-navy .amf-section-number,
+.amf-landing-navy .amf-section-description,
+.amf-landing-navy .amf-text-link,
+.amf-landing-navy .amf-section-title {
+  color: #fff;
+}
+
+.amf-landing-navy .amf-text-link {
+  border-bottom-color: rgba(255,255,255,.75);
+}
+
+.amf-landing-navy .amf-text-link span,
+.amf-landing-navy .amf-landing-vision-grid span,
+.amf-landing-navy .amf-landing-business-grid span {
+  color: #e8b85f;
+}
+
+.amf-landing-navy .amf-landing-vision-grid,
+.amf-landing-navy .amf-landing-business-grid {
+  background: rgba(255,255,255,.25);
+}
+
+.amf-landing-navy .amf-landing-vision-grid article,
+.amf-landing-navy .amf-landing-business-grid article {
+  background: #10243f;
+  border-color: rgba(255,255,255,.24);
+}
+
+.amf-landing-navy .amf-landing-vision-grid p,
+.amf-landing-navy .amf-landing-business-grid p {
+  color: rgba(255,255,255,.75);
+}
+
 .amf-landing-vision-grid,
 .amf-landing-business-grid {
   display: grid;
@@ -1484,7 +1522,7 @@ img {
 }
 
 .amf-landing-business {
-  background: #f3f1ec;
+  background: #fff;
 }
 
 
