@@ -69,6 +69,16 @@
   </section>
 </main>
 
+<div class="amf-lightbox" id="photo-lightbox" aria-hidden="true" role="dialog" aria-label="사진 크게 보기">
+  <button class="amf-lightbox-close" type="button" aria-label="사진 닫기">×</button>
+  <button class="amf-lightbox-prev" type="button" aria-label="이전 사진">‹</button>
+  <figure class="amf-lightbox-figure">
+    <img src="" alt="">
+    <figcaption></figcaption>
+  </figure>
+  <button class="amf-lightbox-next" type="button" aria-label="다음 사진">›</button>
+</div>
+
 <footer class="amf-footer">
   <div class="amf-footer-inner">
     <div><div class="amf-footer-brand">ArtistMind<span>Fit</span></div><p>예술가를 위한 심리교육 기획사</p></div>
@@ -77,5 +87,60 @@
   </div>
   <div class="amf-footer-bottom"><span>사업자등록번호 244-26-01593 · 대표 윤솔</span><span>© 2026 ArtistMindFit. All rights reserved.</span></div>
 </footer>
+<script>
+  const photoItems = [...document.querySelectorAll('.amf-photo-gallery .amf-gallery-item')];
+  const photoLightbox = document.querySelector('#photo-lightbox');
+  const photoLightboxImage = photoLightbox.querySelector('img');
+  const photoLightboxCaption = photoLightbox.querySelector('figcaption');
+  let activePhotoIndex = 0;
+
+  const showPhoto = (index) => {
+    activePhotoIndex = (index + photoItems.length) % photoItems.length;
+    const sourceImage = photoItems[activePhotoIndex].querySelector('img');
+    photoLightboxImage.src = sourceImage.src;
+    photoLightboxImage.alt = sourceImage.alt;
+    photoLightboxCaption.textContent = `${activePhotoIndex + 1} / ${photoItems.length}`;
+  };
+
+  const openPhoto = (index) => {
+    showPhoto(index);
+    photoLightbox.classList.add('is-open');
+    photoLightbox.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('amf-lightbox-open');
+    photoLightbox.querySelector('.amf-lightbox-close').focus();
+  };
+
+  const closePhoto = () => {
+    photoLightbox.classList.remove('is-open');
+    photoLightbox.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('amf-lightbox-open');
+  };
+
+  photoItems.forEach((item, index) => {
+    item.tabIndex = 0;
+    item.setAttribute('role', 'button');
+    item.setAttribute('aria-label', `${index + 1}번 사진 크게 보기`);
+    item.addEventListener('click', () => openPhoto(index));
+    item.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openPhoto(index);
+      }
+    });
+  });
+
+  photoLightbox.querySelector('.amf-lightbox-close').addEventListener('click', closePhoto);
+  photoLightbox.querySelector('.amf-lightbox-prev').addEventListener('click', () => showPhoto(activePhotoIndex - 1));
+  photoLightbox.querySelector('.amf-lightbox-next').addEventListener('click', () => showPhoto(activePhotoIndex + 1));
+  photoLightbox.addEventListener('click', (event) => {
+    if (event.target === photoLightbox) closePhoto();
+  });
+  document.addEventListener('keydown', (event) => {
+    if (!photoLightbox.classList.contains('is-open')) return;
+    if (event.key === 'Escape') closePhoto();
+    if (event.key === 'ArrowLeft') showPhoto(activePhotoIndex - 1);
+    if (event.key === 'ArrowRight') showPhoto(activePhotoIndex + 1);
+  });
+</script>
 </body>
 </html>
