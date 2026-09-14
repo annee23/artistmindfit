@@ -1082,6 +1082,13 @@ img {
   padding-bottom: 30px;
 }
 
+.amf-slogan-inner .amf-section-number,
+.amf-slogan-inner .amf-section-title,
+.amf-slogan-inner .amf-section-description {
+  width: 100%;
+  text-align: center;
+}
+
 .amf-slogan-inner .amf-section-title {
   margin-top: 30px;
   line-height: 1.6;
