@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ko">
+<head><base href="/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>소식 관리 | Artist Mind Fit</title>
+  <link rel="stylesheet" href="design.css">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body>
+<header class="amf-site-header">
+  <a href="/" class="amf-brand-mark">ArtistMind<span>Fit</span></a>
+  <nav class="amf-site-nav" aria-label="주요 메뉴">
+    <div class="amf-nav-dropdown"><a href="/about">소개</a><div class="amf-nav-dropdown-menu"><a href="/about">회사소개</a><a href="/about">대표소개</a></div></div>
+    <a href="/programs">프로그램</a>
+    <a href="/reviews">강의 후기</a>
+    <div class="amf-nav-dropdown"><a href="/notice">공지 / 문의하기</a><div class="amf-nav-dropdown-menu"><a href="/notice">소식</a><a href="/qna">F&amp;Q</a></div></div>
+  </nav>
+  <a href="https://pf.kakao.com/_CSBGG" target="_blank" rel="noopener" class="amf-header-cta">문의하기 ↗</a>
+</header>
+
+<main>
+  <section class="amf-detail-hero">
+    <div></div>
+    <div class="amf-detail-hero-copy">
+      <div class="amf-section-number">NOTICE ADMIN</div>
+      <h1>소식을<br><em>추가합니다.</em></h1>
+      <p>작성한 소식은 이 브라우저에 저장되며 공지 페이지에 바로 표시됩니다.</p>
+    </div>
+  </section>
+
+  <section class="amf-detail-body">
+    <div class="amf-admin-panel">
+      <form class="amf-admin-form" id="notice-form">
+        <label>분류
+          <select name="category">
+            <option value="PROGRAM">PROGRAM</option>
+            <option value="NEWS">NEWS</option>
+            <option value="RECRUITMENT">RECRUITMENT</option>
+          </select>
+        </label>
+        <label>제목
+          <input name="title" type="text" required maxlength="100" placeholder="소식 제목을 입력하세요">
+        </label>
+        <label>연결 주소 (선택)
+          <input name="url" type="url" placeholder="https://">
+        </label>
+        <button type="submit">소식 저장하기</button>
+      </form>
+      <div class="amf-admin-items" id="saved-notices"></div>
+      <a href="/notice/ class="amf-text-link">공지 페이지 보기 <span>↗</span></a>
+    </div>
+  </section>
+</main>
+
+<footer class="amf-footer">
+  <div class="amf-footer-inner">
+    <div><div class="amf-footer-brand">ArtistMind<span>Fit</span></div><p>예술가를 위한 심리교육 기획사</p></div>
+    <div class="amf-footer-nav"><a href="/about">소개</a><a href="/programs">프로그램</a><a href="/reviews">강의 후기</a><a href="/notice">공지</a></div>
+    <div class="amf-footer-contact"><a href="tel:01063068231">010-6306-8231</a><a href="mailto:yoon@artistminfit.com">yoon@artistminfit.com</a></div>
+  </div>
+  <div class="amf-footer-bottom"><span>사업자등록번호 244-26-01593 · 대표 윤솔</span><span>© 2026 ArtistMindFit. All rights reserved.</span></div>
+</footer>
+
+<script>
+  const noticeStorageKey = 'artistMindFitNotices';
+  const form = document.querySelector('#notice-form');
+  const savedNotices = document.querySelector('#saved-notices');
+
+  const getNotices = () => JSON.parse(localStorage.getItem(noticeStorageKey) || '[]');
+  const saveNotices = (notices) => localStorage.setItem(noticeStorageKey, JSON.stringify(notices));
+
+  const renderNotices = () => {
+    savedNotices.replaceChildren();
+    getNotices().forEach((notice, index) => {
+      const item = document.createElement('div');
+      item.className = 'amf-admin-item';
+      const title = document.createElement('strong');
+      title.textContent = `${notice.category} · ${notice.title}`;
+      const deleteButton = document.createElement('button');
+      deleteButton.className = 'amf-admin-delete';
+      deleteButton.type = 'button';
+      deleteButton.textContent = '삭제';
+      deleteButton.addEventListener('click', () => {
+        const notices = getNotices();
+        notices.splice(index, 1);
+        saveNotices(notices);
+        renderNotices();
+      });
+      item.append(title, deleteButton);
+      savedNotices.append(item);
+    });
+  };
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const formData = new FormData(form);
+    const notices = getNotices();
+    notices.unshift({
+      category: formData.get('category'),
+      title: formData.get('title').trim(),
+      url: formData.get('url').trim()
+    });
+    saveNotices(notices);
+    form.reset();
+    renderNotices();
+  });
+
+  renderNotices();
+</script>
+</body>
+</html>

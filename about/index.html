@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ko">
-<head>
+<head><base href="/">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>소개 | Artist Mind Fit</title>
@@ -15,9 +15,9 @@
 </head>
 <body>
 <header class="amf-site-header">
-  <a href="index.html" class="amf-brand-mark">ArtistMind<span>Fit</span></a>
+  <a href="/" class="amf-brand-mark">ArtistMind<span>Fit</span></a>
   <nav class="amf-site-nav" aria-label="주요 메뉴">
-    <a href="about.html">소개</a><a href="reviews.html">강의 후기</a><a href="notice.html">공지</a>
+    <div class="amf-nav-dropdown"><a href="/about">소개</a><div class="amf-nav-dropdown-menu"><a href="/about">회사소개</a><a href="/about">대표소개</a></div></div><a href="/programs">프로그램</a><a href="/reviews">강의 후기</a><div class="amf-nav-dropdown"><a href="/notice">공지</a><div class="amf-nav-dropdown-menu"><a href="/notice">소식</a><a href="/qna">F&amp;Q</a></div></div>
   </nav>
   <a href="https://pf.kakao.com/_CSBGG" target="_blank" rel="noopener" class="amf-header-cta">문의하기 ↗</a>
 </header>
@@ -38,6 +38,20 @@
         <div class="amf-vision-item"><div class="amf-vision-index">01</div><div class="amf-vision-title">열린 태도 <em>Open-mindedness</em></div><div class="amf-vision-text">다름을 존중하고, 다양한 관점을 수용하는 개방적 자세</div></div>
         <div class="amf-vision-item"><div class="amf-vision-index">02</div><div class="amf-vision-title">창의적 사고 <em>Creative Thinking</em></div><div class="amf-vision-text">자유롭게 표현하고, 스스로 사고하는 힘</div></div>
         <div class="amf-vision-item"><div class="amf-vision-index">03</div><div class="amf-vision-title">성장 <em>Growth</em></div><div class="amf-vision-text">자신의 감정을 이해하고 삶의 방향을 찾아가는 내면의 확장</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="amf-section amf-representative">
+    <div class="amf-section-inner">
+      <div class="amf-section-number">REPRESENTATIVE / 06</div>
+      <h2 class="amf-section-title">안녕하세요.<br>아티스트마인드핏 대표 윤 솔입니다.</h2>
+      <div class="amf-representative-copy">
+        <p>저는 15년 동안 비올라를 전공하며 한 길을 걸어왔고, 그 이후 심리상담을 공부하며 마음의 결을 들여다보는 일을 시작했습니다.</p>
+        <p>우리는 누구나 삶의 어느 지점에서 길을 잃고 방황하곤 합니다. 하지만 그 방황의 시간을 조금만 더 단단하게 견디고 들여다본다면, 그것은 단순한 혼란이 아니라 자신만의 고유한 <strong>'방향'</strong>을 찾아가는 소중한 과정이 됩니다.</p>
+        <p>아티스트마인드핏은 내면의 감각을 깨워 갈등과 감정을 직면하고 이해하도록 돕습니다.</p>
+        <p>막막한 방황의 순간을 단단한 성장의 시간으로 바꿀 때, 방황은 비로소 확신 있는 방향이 됩니다.</p>
+        <p>삶이라는 무대 위에서 자신만의 원리를 실천하며 흔들림 없이 나아갈 수 있도록, 아티스트마인드핏이 정성을 다해 함께하겠습니다.</p>
       </div>
     </div>
   </section>
@@ -66,7 +80,7 @@
 <footer class="amf-footer">
   <div class="amf-footer-inner">
     <div><div class="amf-footer-brand">ArtistMind<span>Fit</span></div><p>예술가를 위한 심리교육 기획사</p></div>
-    <div class="amf-footer-nav"><a href="programs.html">프로그램</a><a href="about.html">회사소개</a><a href="reviews.html">후기</a><a href="proposal.html">문의</a></div>
+    <div class="amf-footer-nav"><a href="/about">소개</a><a href="/programs">프로그램</a><a href="/reviews">강의 후기</a><a href="/notice">공지</a></div>
     <div class="amf-footer-contact"><a href="tel:01063068231">010-6306-8231</a><a href="mailto:yoon@artistminfit.com">yoon@artistminfit.com</a></div>
   </div>
   <div class="amf-footer-bottom"><span>사업자등록번호 244-26-01593 · 대표 윤솔</span><span>© 2026 ArtistMindFit</span></div>
