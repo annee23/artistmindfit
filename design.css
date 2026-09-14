@@ -1007,6 +1007,13 @@ img {
   font-size: 13px;
 }
 
+.amf-inquiry-status {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: var(--amf-point-text);
+  font-size: 13px;
+}
+
 .amf-representative-copy {
   max-width: 720px;
   margin: 30px 0 0;
@@ -1137,7 +1144,8 @@ img {
 
 .amf-career-list {
   max-width: 820px;
-  margin: 54px 0 0 auto;
+  margin: 54px 0 0;
+  text-align: left;
   padding-top: 28px;
   border-top: 1px solid rgba(23,23,23,.14);
 }

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://artistmindfit.com/sitemap.xml
