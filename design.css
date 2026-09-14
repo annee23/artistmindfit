@@ -1015,6 +1015,10 @@ img {
   line-height: 2;
 }
 
+.amf-company-page .amf-representative {
+  display: none;
+}
+
 .amf-representative-layout {
   display: grid;
   grid-template-columns: minmax(260px, 34%) 1fr;
@@ -1577,6 +1581,32 @@ img {
 
 .amf-social-links a:hover span {
   color: #fff;
+}
+
+.amf-old-slogan,
+.amf-old-social {
+  display: none;
+}
+
+.amf-footer-social .amf-social-title {
+  font-size: 22px;
+}
+
+.amf-footer-social .amf-social-handle {
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+.amf-footer-social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  margin-top: 18px;
+}
+
+.amf-footer-social-links a {
+  color: #666;
+  font-size: 12px;
 }
 
 .amf-review-grid {
