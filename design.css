@@ -1009,10 +1009,28 @@ img {
 
 .amf-representative-copy {
   max-width: 720px;
-  margin: 36px 0 0 auto;
+  margin: 30px 0 0;
   color: #555;
   font-size: 16px;
   line-height: 2;
+}
+
+.amf-representative-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 34%) 1fr;
+  gap: 64px;
+  align-items: start;
+  margin-top: 42px;
+}
+
+.amf-representative-photo-placeholder {
+  display: grid;
+  min-height: 520px;
+  place-items: center;
+  background: #ececef;
+  color: #999;
+  font-size: 12px;
+  letter-spacing: .08em;
 }
 
 .amf-representative-copy p {
@@ -2061,6 +2079,15 @@ img {
   .amf-representative-copy {
     margin-left: 0;
     font-size: 14px;
+  }
+
+  .amf-representative-layout {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .amf-representative-photo-placeholder {
+    min-height: 420px;
   }
 
   .amf-business-grid {
