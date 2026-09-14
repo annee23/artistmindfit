@@ -386,14 +386,15 @@ img {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(90deg, rgba(12, 22, 38, .72) 0%, rgba(12, 22, 38, .34) 48%, rgba(12, 22, 38, .18) 100%);
-  opacity: 0;
+  background: linear-gradient(90deg, rgba(12, 22, 38, .24) 0%, rgba(12, 22, 38, .08) 34%, transparent 62%);
+  opacity: 1;
   transition: opacity .35s ease;
   pointer-events: none;
 }
 
 .amf-hero-media.has-overlay::after {
   opacity: 1;
+  background: linear-gradient(90deg, rgba(12, 22, 38, .62) 0%, rgba(12, 22, 38, .24) 42%, transparent 72%);
 }
 
 .amf-hero-brand-overlay {
@@ -1859,7 +1860,7 @@ img {
   }
 
   .amf-hero-media::after {
-    background: linear-gradient(180deg, rgba(12, 22, 38, .12) 0%, rgba(12, 22, 38, .2) 42%, rgba(12, 22, 38, .78) 100%);
+    background: linear-gradient(90deg, rgba(12, 22, 38, .28) 0%, rgba(12, 22, 38, .08) 42%, transparent 68%);
   }
 
   .amf-hero-brand-overlay {
