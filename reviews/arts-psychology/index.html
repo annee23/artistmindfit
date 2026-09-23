@@ -4,14 +4,34 @@
   <base href="/">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>강의 후기 | Artist Mind Fit</title>
+  <title>예술심리 프로그램 후기 | Artist Mind Fit</title>
   <link rel="stylesheet" href="design.css">
   <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
 <body>
 <header class="amf-site-header"><a href="/" class="amf-brand-mark">ArtistMind<span>Fit</span></a><nav class="amf-site-nav" aria-label="주요 메뉴"><div class="amf-nav-dropdown"><a href="/about/">소개</a><div class="amf-nav-dropdown-menu"><a href="/about/">회사소개</a><a href="/representative/">대표소개</a></div></div><a href="/programs/">프로그램</a><a href="/reviews/">강의 후기</a><div class="amf-nav-dropdown"><a href="/notice/">공지</a><div class="amf-nav-dropdown-menu"><a href="/notice/">소식</a><a href="/qna/">F&amp;Q</a></div></div></nav><a href="https://pf.kakao.com/_CSBGG" target="_blank" rel="noopener" class="amf-header-cta">문의하기 ↗</a></header>
-<main><section class="amf-detail-hero"><div></div><div class="amf-detail-hero-copy"><div class="amf-section-number">REVIEWS / 07</div><h1>함께한 사람들의<br><em>생생한 이야기.</em></h1><p>프로그램별 참여자 후기를 확인해 보세요.</p></div></section><section class="amf-detail-body"><div class="amf-detail-intro"><h2>경험이 남긴<br>작은 변화들.</h2><p>참여자가 직접 전한 변화의 순간들을 프로그램별로 소개합니다.</p></div><div class="amf-detail-block-grid amf-review-category-grid"><a href="/reviews/psychology/" class="amf-detail-block"><div class="amf-section-number">01 / PSYCHOLOGY</div><h3>심리 프로그램</h3><p>멘탈코칭과 심리검사, 전공 탐색 수업 참여자 후기입니다.</p><span class="amf-detail-block-link">후기 보기 <span>→</span></span></a><a href="/reviews/arts-psychology/" class="amf-detail-block"><div class="amf-section-number">02 / ARTS PSYCHOLOGY</div><h3>예술심리 프로그램</h3><p>연극, 오디션 워크숍, 예술가 모임과 심리 특강 참여자 후기입니다.</p><span class="amf-detail-block-link">후기 보기 <span>→</span></span></a></div></section></main>
+<main><section class="amf-detail-hero"><div></div><div class="amf-detail-hero-copy"><div class="amf-section-number">REVIEWS / ARTS PSYCHOLOGY</div><h1>예술심리 프로그램<br><em>생생한 참여자 후기.</em></h1><p>예술 활동을 통해 감정을 표현하고, 자신과 서로를 깊이 이해한 참여자들의 이야기입니다.</p></div></section><section class="amf-detail-body">
+<div class="amf-detail-intro"><h2>감각을 깨우며<br>만난 작은 변화들.</h2><p>연극 심리프로그램, 오디션 워크숍, 예술가 모임과 심리 특강에 참여한 분들의 후기입니다.</p></div>
+<div id="amf-arts-review-content" aria-live="polite"></div>
+<a href="/proposal/" class="amf-detail-cta">프로그램 문의하기 ↗</a>
+</section></main>
 <footer class="amf-footer"><div class="amf-footer-inner"><div><div class="amf-footer-brand">ArtistMind<span>Fit</span></div><p>예술가를 위한 심리교육 기획사</p></div><div class="amf-footer-nav"><a href="/about/">소개</a><a href="/programs/">프로그램</a><a href="/reviews/">강의 후기</a><a href="/notice/">공지</a></div><div class="amf-footer-contact"><a href="tel:01063068231">010-6306-8231</a><a href="mailto:yoon@artistminfit.com">yoon@artistminfit.com</a></div></div><div class="amf-footer-bottom"><span>사업자등록번호 244-26-01593 · 대표 윤솔</span><span>© 2026 ArtistMindFit</span></div></footer>
+<script>
+  fetch('/reviews/')
+    .then((response) => response.text())
+    .then((html) => {
+      const source = new DOMParser().parseFromString(html, 'text/html');
+      const heading = source.querySelector('#arts-psychology');
+      const target = document.querySelector('#amf-arts-review-content');
+      if (!heading || !target) return;
+
+      let current = heading;
+      while (current && !current.matches('footer')) {
+        target.append(current.cloneNode(true));
+        current = current.nextElementSibling;
+      }
+    });
+</script>
 <script src="/footer.js"></script>
 </body>
 </html>

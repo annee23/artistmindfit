@@ -63,21 +63,12 @@ img {
 }
 
 .amf-scroll-reveal {
-  opacity: 0;
-  transform: translateY(32px);
-  transition: opacity .9s cubic-bezier(.2,.6,.2,1), transform .9s cubic-bezier(.2,.6,.2,1);
-}
-
-.amf-scroll-reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+  content-visibility: auto;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .amf-scroll-reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
+  html {
+    scroll-behavior: auto;
   }
 }
 
@@ -859,6 +850,19 @@ img {
   line-height: 1.9;
 }
 
+#company .amf-detail-hero-copy {
+  max-width: 640px;
+}
+
+#company .amf-detail-hero h1 {
+  font-size: clamp(25px, 2.5vw, 34px);
+}
+
+#company .amf-detail-hero p {
+  max-width: 480px;
+  font-size: 15px;
+}
+
 .amf-detail-body {
   max-width: var(--amf-max-width);
   margin: 0 auto;
@@ -931,6 +935,32 @@ img {
   line-height: 1.8;
 }
 
+.amf-psychology-service-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.amf-psychology-service-grid .amf-detail-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.amf-detail-block-link {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  width: fit-content;
+  margin-top: 32px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid var(--amf-black);
+  color: var(--amf-black);
+  font-size: 13px;
+}
+
+.amf-detail-block-link span {
+  color: var(--amf-point-text);
+  font-size: 17px;
+}
+
 .amf-detail-list {
   margin-top: 90px;
   border-top: 1px solid var(--amf-black);
@@ -953,6 +983,57 @@ img {
 .amf-detail-list-item span:last-child {
   color: var(--amf-point-text);
   font-size: 20px;
+}
+
+.amf-faq-list {
+  margin-top: 90px;
+  border-top: 1px solid var(--amf-black);
+}
+
+.amf-faq-item {
+  border-bottom: 1px solid var(--amf-light-gray);
+}
+
+.amf-faq-item summary {
+  display: grid;
+  grid-template-columns: 170px 1fr 24px;
+  gap: 20px;
+  align-items: center;
+  min-height: 82px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.amf-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.amf-faq-item summary::after {
+  color: var(--amf-point-text);
+  content: "+";
+  font-size: 22px;
+  line-height: 1;
+}
+
+.amf-faq-item[open] summary::after {
+  content: "-";
+}
+
+.amf-faq-item summary strong {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.amf-faq-answer {
+  max-width: 720px;
+  margin: 0 44px 32px 190px;
+  color: #666;
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.amf-faq-answer p {
+  margin: 0 0 14px;
 }
 
 .amf-program-part-heading {
@@ -1017,6 +1098,10 @@ img {
 
 .amf-inquiry-form textarea {
   resize: vertical;
+}
+
+.amf-inquiry-form textarea::placeholder {
+  color: #999;
 }
 
 .amf-inquiry-form button {
@@ -1101,26 +1186,25 @@ img {
 }
 
 .amf-slogan-inner {
-  text-align: center;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+  align-items: start;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
-.amf-slogan-inner .amf-section-number,
-.amf-slogan-inner .amf-section-title,
-.amf-slogan-inner .amf-section-description {
-  width: 100%;
-  text-align: center;
+.amf-slogan-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
 }
 
 .amf-slogan-inner .amf-section-title {
-  margin-top: 30px;
-  line-height: 1.6;
-}
-
-.amf-slogan-inner .amf-section-description {
-  margin-top: 26px;
-  line-height: 2;
+  margin: 0;
+  font-size: clamp(24px, 2vw, 31px);
+  line-height: 1.35;
 }
 
 .amf-story-copy {
@@ -2200,6 +2284,11 @@ img {
     margin-bottom: 55px;
   }
 
+  .amf-slogan-inner {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
   .amf-section-number {
     margin-bottom: 25px;
   }
@@ -2316,6 +2405,10 @@ img {
     min-height: 210px;
   }
 
+  .amf-psychology-service-grid {
+    grid-template-columns: 1fr;
+  }
+
   .amf-detail-block h3 {
     margin-top: 45px;
   }
@@ -2332,6 +2425,30 @@ img {
 
   .amf-detail-list-item span:first-child {
     grid-column: 1 / -1;
+  }
+
+  .amf-faq-list {
+    margin-top: 55px;
+  }
+
+  .amf-faq-item summary {
+    grid-template-columns: 1fr 24px;
+    gap: 10px;
+    padding: 18px 0;
+  }
+
+  .amf-faq-item summary .amf-section-number {
+    grid-column: 1 / -1;
+    margin-bottom: 0;
+  }
+
+  .amf-faq-item summary strong {
+    font-size: 15px;
+  }
+
+  .amf-faq-answer {
+    margin: 0 0 26px;
+    font-size: 14px;
   }
 
   .amf-inquiry-form {
