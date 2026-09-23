@@ -2,29 +2,51 @@ const initializeSharedNavigation = () => {
   const aboutDropdown = document.querySelector('.amf-site-nav .amf-nav-dropdown');
   if (aboutDropdown) {
     const aboutLink = aboutDropdown.querySelector(':scope > a');
-    if (aboutLink) aboutLink.href = '/about/company/';
+    if (aboutLink) {
+      const trigger = document.createElement('button');
+      trigger.type = 'button';
+      trigger.className = 'amf-nav-dropdown-trigger';
+      trigger.setAttribute('aria-haspopup', 'true');
+      trigger.textContent = '소개';
+      aboutLink.replaceWith(trigger);
+    }
 
     aboutDropdown.querySelectorAll('.amf-nav-dropdown-menu a').forEach((link) => {
       if (link.textContent.trim() === '회사소개') link.href = '/about/company/';
-      if (link.textContent.trim() === '대표소개') link.href = '/about/representative/';
+      if (link.textContent.trim() === '대표소개') link.href = '/about/founder/';
     });
   }
 
-  const siteNavigation = document.querySelector('.amf-site-nav');
-  const reviewsLink = siteNavigation && [...siteNavigation.children]
-    .find((item) => item.tagName === 'A' && item.getAttribute('href') === '/reviews/');
-  if (reviewsLink) {
+  const reviewsLink = [...document.querySelectorAll('.amf-site-nav a')]
+    .find((link) => link.textContent.trim() === '강의 후기' && !link.closest('.amf-nav-dropdown-menu'));
+  if (reviewsLink && !reviewsLink.parentElement.classList.contains('amf-nav-dropdown')) {
     const reviewsDropdown = document.createElement('div');
     reviewsDropdown.className = 'amf-nav-dropdown';
-    reviewsDropdown.innerHTML = '<a href="/reviews/">강의 후기</a><div class="amf-nav-dropdown-menu"><a href="/reviews/psychology/">심리 프로그램</a><a href="/reviews/arts-psychology/">예술심리 프로그램</a></div>';
+    reviewsDropdown.innerHTML = '<button type="button" class="amf-nav-dropdown-trigger" aria-haspopup="true">강의 후기</button><div class="amf-nav-dropdown-menu"><a href="/reviews/psychology/">심리 프로그램</a><a href="/reviews/arts-psychology/">예술심리 프로그램</a></div>';
     reviewsLink.replaceWith(reviewsDropdown);
   }
+
+  document.querySelectorAll('.amf-nav-dropdown > a[href="/reviews/"]').forEach((link) => {
+    const trigger = document.createElement('button');
+    trigger.type = 'button';
+    trigger.className = 'amf-nav-dropdown-trigger';
+    trigger.setAttribute('aria-haspopup', 'true');
+    trigger.textContent = '강의 후기';
+    link.replaceWith(trigger);
+  });
 
   const noticeDropdown = [...document.querySelectorAll('.amf-site-nav .amf-nav-dropdown')]
     .find((dropdown) => dropdown.querySelector(':scope > a')?.textContent.trim() === '공지');
   if (noticeDropdown) {
     const noticeLink = noticeDropdown.querySelector(':scope > a');
-    if (noticeLink) noticeLink.href = '/notice/news/';
+    if (noticeLink) {
+      const trigger = document.createElement('button');
+      trigger.type = 'button';
+      trigger.className = 'amf-nav-dropdown-trigger';
+      trigger.setAttribute('aria-haspopup', 'true');
+      trigger.textContent = '공지';
+      noticeLink.replaceWith(trigger);
+    }
 
     noticeDropdown.querySelectorAll('.amf-nav-dropdown-menu a').forEach((link) => {
       if (link.textContent.trim() === '소식') link.href = '/notice/news/';
