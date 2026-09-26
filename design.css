@@ -35,6 +35,7 @@ body {
     -apple-system,
     BlinkMacSystemFont,
     sans-serif;
+  font-size: calc(16px + 2px);
   letter-spacing: 0;
   margin: 0;
 }
@@ -88,7 +89,7 @@ img {
 
 .amf-brand-mark,
 .amf-footer-brand {
-  font-size: 16px;
+  font-size: calc(16px + 2px);
   font-weight: 500;
   letter-spacing: -.03em;
   white-space: nowrap;
@@ -125,7 +126,7 @@ img {
   color: inherit;
   cursor: pointer;
   font-family: inherit;
-  font-size: 12px;
+  font-size: calc(12px + 2px);
   font-weight: inherit;
   line-height: inherit;
 }
@@ -171,7 +172,7 @@ img {
 
 .amf-site-nav a,
 .amf-header-cta {
-  font-size: 12px;
+  font-size: calc(12px + 2px);
   font-weight: 400;
   transition: color .25s ease, opacity .25s ease;
 }
@@ -231,7 +232,7 @@ img {
 }
 
 .header .gnb_wrap .gnb > li > a {
-  font-size: 14px;
+  font-size: calc(14px + 2px);
   font-weight: 500;
   letter-spacing: -0.01em;
   transition: opacity .25s ease;
@@ -274,7 +275,7 @@ img {
 }
 
 .amf-eyebrow {
-  font-size: 12px;
+  font-size: calc(12px + 2px);
   letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--amf-gray);
@@ -283,7 +284,7 @@ img {
 
 .amf-hero-title {
   max-width: 900px;
-  font-size: clamp(28px, 3vw, 46px);
+  font-size: calc(clamp(28px, 3vw, 46px) + 2px);
   line-height: 1.05;
   font-weight: 400;
   letter-spacing: -.04em;
@@ -298,7 +299,7 @@ img {
 
 .amf-hero-korean-title {
   margin: 26px 0 0;
-  font-size: clamp(22px, 2.2vw, 32px);
+  font-size: calc(clamp(22px, 2.2vw, 32px) + 2px);
   line-height: 1.2;
   font-weight: 500;
   letter-spacing: -.04em;
@@ -308,7 +309,7 @@ img {
 .amf-hero-description {
   max-width: 530px;
   margin-top: 42px;
-  font-size: 15px;
+  font-size: calc(15px + 2px);
   line-height: 1.95;
   color: #566273;
 }
@@ -328,7 +329,7 @@ img {
   padding-bottom: 9px;
   border-bottom: 1px solid var(--amf-black);
   color: var(--amf-black);
-  font-size: 15px;
+  font-size: calc(15px + 2px);
   letter-spacing: .02em;
 }
 
@@ -339,7 +340,7 @@ img {
 
 .amf-text-link span {
   color: var(--amf-point-text);
-  font-size: 18px;
+  font-size: calc(18px + 2px);
   transition: transform .25s ease;
 }
 
@@ -419,7 +420,7 @@ img {
   right: 36px;
   z-index: 2;
   color: #fff;
-  font-size: clamp(15px, 1.5vw, 24px);
+  font-size: calc(clamp(15px, 1.5vw, 24px) + 2px);
   font-weight: 500;
   letter-spacing: -.03em;
   line-height: 1;
@@ -437,7 +438,7 @@ img {
   right: 14px;
   bottom: 12px;
   color: white;
-  font-size: 9px;
+  font-size: calc(9px + 2px);
   letter-spacing: .16em;
   z-index: 1;
   text-shadow: 0 1px 5px rgba(0,0,0,.4);
@@ -466,7 +467,7 @@ img {
 .amf-landing-notes-head p {
   margin: 0;
   color: #666;
-  font-size: 16px;
+  font-size: calc(16px + 2px);
   line-height: 1.8;
 }
 
@@ -539,14 +540,14 @@ img {
 }
 
 .amf-section-number {
-  font-size: 12px;
+  font-size: calc(12px + 2px);
   letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--amf-gray);
 }
 
 .amf-section-title {
-  font-size: clamp(21px, 1.9vw, 30px);
+  font-size: calc(clamp(21px, 1.9vw, 30px) + 2px);
   line-height: 1.15;
   font-weight: 400;
   letter-spacing: -.03em;
@@ -556,7 +557,7 @@ img {
 .amf-section-description {
   max-width: 600px;
   margin-top: 25px;
-  font-size: 15px;
+  font-size: calc(15px + 2px);
   line-height: 1.8;
   color: #666;
 }
@@ -594,7 +595,7 @@ img {
   right: 14px;
   bottom: 12px;
   color: white;
-  font-size: 9px;
+  font-size: calc(9px + 2px);
   letter-spacing: .13em;
   text-shadow: 0 1px 5px rgba(0,0,0,.3);
 }
@@ -603,13 +604,13 @@ img {
 .amf-review-type,
 .amf-notice-tag {
   color: var(--amf-point-text);
-  font-size: 11px;
+  font-size: calc(11px + 2px);
   letter-spacing: .13em;
 }
 
 .amf-profile-copy h3 {
   margin: 32px 0 0;
-  font-size: clamp(20px, 2vw, 28px);
+  font-size: calc(clamp(20px, 2vw, 28px) + 2px);
   line-height: 1.2;
   font-weight: 400;
   letter-spacing: -.02em;
@@ -619,7 +620,7 @@ img {
   max-width: 510px;
   margin: 28px 0 0;
   color: #666;
-  font-size: 15px;
+  font-size: calc(15px + 2px);
   line-height: 1.9;
 }
 
@@ -635,7 +636,7 @@ img {
 .amf-client-list p {
   margin: 0;
   color: #555;
-  font-size: 14px;
+  font-size: calc(14px + 2px);
   line-height: 1.8;
 }
 
@@ -670,14 +671,14 @@ img {
 }
 
 .amf-program-number {
-  font-size: 12px;
+  font-size: calc(12px + 2px);
   letter-spacing: .1em;
   color: var(--amf-gray);
 }
 
 .amf-program-title {
   margin-top: 105px;
-  font-size: 32px;
+  font-size: calc(32px + 2px);
   font-weight: 400;
   letter-spacing: -.03em;
 }
@@ -685,14 +686,14 @@ img {
 .amf-program-text {
   max-width: 450px;
   margin-top: 18px;
-  font-size: 14px;
+  font-size: calc(14px + 2px);
   line-height: 1.75;
   color: #666;
 }
 
 .amf-program-arrow {
   margin-top: 28px;
-  font-size: 22px;
+  font-size: calc(22px + 2px);
   color: var(--amf-point-text);
   transition: transform .3s ease;
 }
@@ -720,7 +721,7 @@ img {
 
 .amf-program-page-intro h2 {
   margin: 0;
-  font-size: clamp(32px, 3.6vw, 54px);
+  font-size: calc(clamp(32px, 3.6vw, 54px) + 2px);
   font-weight: 400;
   line-height: 1.08;
   letter-spacing: -.04em;
@@ -736,7 +737,7 @@ img {
   max-width: 480px;
   margin: -58px 0 0;
   color: #5f6672;
-  font-size: 16px;
+  font-size: calc(16px + 2px);
   line-height: 1.8;
 }
 
@@ -757,7 +758,7 @@ img {
 
 .amf-program-page-index {
   color: var(--amf-point-text);
-  font-size: 38px;
+  font-size: calc(38px + 2px);
 }
 
 .amf-program-page-dark .amf-program-page-index,
@@ -767,13 +768,13 @@ img {
 
 .amf-program-page-label {
   color: var(--amf-point-text);
-  font-size: 11px;
+  font-size: calc(11px + 2px);
   letter-spacing: .16em;
 }
 
 .amf-program-page-copy h3 {
   margin: 28px 0 0;
-  font-size: clamp(24px, 2.6vw, 38px);
+  font-size: calc(clamp(24px, 2.6vw, 38px) + 2px);
   font-weight: 400;
   line-height: 1.15;
   letter-spacing: -.03em;
@@ -783,7 +784,7 @@ img {
   max-width: 520px;
   margin: 30px 0 0;
   color: #666;
-  font-size: 15px;
+  font-size: calc(15px + 2px);
   line-height: 1.9;
 }
 
@@ -799,7 +800,7 @@ img {
   border-top: 1px solid var(--amf-light-gray);
   list-style: none;
   color: #555;
-  font-size: 13px;
+  font-size: calc(13px + 2px);
 }
 
 .amf-program-page-copy li::before {
@@ -819,7 +820,7 @@ img {
   padding-top: 25px;
   border-top: 1px solid var(--amf-point);
   color: var(--amf-point-text);
-  font-size: 13px;
+  font-size: calc(13px + 2px);
   font-weight: 400;
   letter-spacing: .12em;
   line-height: 1.45;
@@ -872,7 +873,7 @@ img {
 
 .amf-detail-hero h1 {
   margin: 24px 0 0;
-  font-size: clamp(28px, 3vw, 42px);
+  font-size: calc(clamp(28px, 3vw, 42px) + 2px);
   font-weight: 400;
   line-height: 1.1;
   letter-spacing: -.03em;
@@ -887,7 +888,7 @@ img {
   max-width: 590px;
   margin: 32px 0 0;
   color: #596274;
-  font-size: 17px;
+  font-size: calc(17px + 2px);
   line-height: 1.9;
 }
 
@@ -896,12 +897,12 @@ img {
 }
 
 #company .amf-detail-hero h1 {
-  font-size: clamp(25px, 2.5vw, 34px);
+  font-size: calc(clamp(25px, 2.5vw, 34px) + 2px);
 }
 
 #company .amf-detail-hero p {
   max-width: 480px;
-  font-size: 15px;
+  font-size: calc(15px + 2px);
 }
 
 .amf-detail-body {
@@ -920,7 +921,7 @@ img {
 
 .amf-detail-intro h2 {
   margin: 0;
-  font-size: clamp(22px, 2.2vw, 32px);
+  font-size: calc(clamp(22px, 2.2vw, 32px) + 2px);
   font-weight: 400;
   line-height: 1.2;
   letter-spacing: -.02em;
@@ -930,7 +931,7 @@ img {
   max-width: 620px;
   margin: 0;
   color: #626262;
-  font-size: 16px;
+  font-size: calc(16px + 2px);
   line-height: 1.9;
 }
 
@@ -965,14 +966,14 @@ img {
 
 .amf-detail-block h3 {
   margin: 72px 0 0;
-  font-size: 17px;
+  font-size: calc(17px + 2px);
   font-weight: 400;
 }
 
 .amf-detail-block p {
   margin: 15px 0 0;
   color: #666;
-  font-size: 14px;
+  font-size: calc(14px + 2px);
   line-height: 1.8;
 }
 
@@ -994,12 +995,12 @@ img {
   padding-bottom: 7px;
   border-bottom: 1px solid var(--amf-black);
   color: var(--amf-black);
-  font-size: 13px;
+  font-size: calc(13px + 2px);
 }
 
 .amf-detail-block-link span {
   color: var(--amf-point-text);
-  font-size: 17px;
+  font-size: calc(17px + 2px);
 }
 
 .amf-detail-list {
@@ -1017,13 +1018,13 @@ img {
 }
 
 .amf-detail-list-item strong {
-  font-size: 16px;
+  font-size: calc(16px + 2px);
   font-weight: 400;
 }
 
 .amf-detail-list-item span:last-child {
   color: var(--amf-point-text);
-  font-size: 20px;
+  font-size: calc(20px + 2px);
 }
 
 .amf-faq-list {
@@ -1052,7 +1053,7 @@ img {
 .amf-faq-item summary::after {
   color: var(--amf-point-text);
   content: "+";
-  font-size: 22px;
+  font-size: calc(22px + 2px);
   line-height: 1;
 }
 
@@ -1061,7 +1062,7 @@ img {
 }
 
 .amf-faq-item summary strong {
-  font-size: 16px;
+  font-size: calc(16px + 2px);
   font-weight: 400;
 }
 
@@ -1069,7 +1070,7 @@ img {
   max-width: 720px;
   margin: 0 44px 32px 190px;
   color: #666;
-  font-size: 15px;
+  font-size: calc(15px + 2px);
   line-height: 1.85;
 }
 
@@ -1085,7 +1086,7 @@ img {
 
 .amf-program-part-heading h2 {
   margin: 16px 0 10px;
-  font-size: clamp(25px, 3vw, 38px);
+  font-size: calc(clamp(25px, 3vw, 38px) + 2px);
   font-weight: 400;
   letter-spacing: -.04em;
 }
@@ -1093,7 +1094,7 @@ img {
 .amf-program-part-heading p {
   margin: 0;
   color: #666;
-  font-size: 14px;
+  font-size: calc(14px + 2px);
 }
 
 .amf-program-grid {
@@ -1109,7 +1110,7 @@ img {
 
 .amf-inquiry-wrap h2 {
   margin: 16px 0 30px;
-  font-size: 28px;
+  font-size: calc(28px + 2px);
   font-weight: 400;
   letter-spacing: -.04em;
 }
@@ -1123,7 +1124,7 @@ img {
 
 .amf-inquiry-form label {
   color: #555;
-  font-size: 13px;
+  font-size: calc(13px + 2px);
 }
 
 .amf-inquiry-form input,
@@ -1154,21 +1155,21 @@ img {
   color: #fff;
   cursor: pointer;
   font: inherit;
-  font-size: 13px;
+  font-size: calc(13px + 2px);
 }
 
 .amf-inquiry-status {
   grid-column: 1 / -1;
   margin: 0;
   color: var(--amf-point-text);
-  font-size: 13px;
+  font-size: calc(13px + 2px);
 }
 
 .amf-founder-copy {
   max-width: 720px;
   margin: 30px 0 0;
   color: #555;
-  font-size: 16px;
+  font-size: calc(16px + 2px);
   line-height: 2;
 }
 
@@ -1190,7 +1191,7 @@ img {
   place-items: center;
   background: #ececef;
   color: #999;
-  font-size: 12px;
+  font-size: calc(12px + 2px);
   letter-spacing: .08em;
 }
 
@@ -1244,7 +1245,7 @@ img {
 
 .amf-slogan-inner .amf-section-title {
   margin: 0;
-  font-size: clamp(24px, 2vw, 31px);
+  font-size: calc(clamp(24px, 2vw, 31px) + 2px);
   line-height: 1.35;
 }
 
@@ -1252,7 +1253,7 @@ img {
   max-width: 680px;
   margin: 28px 0 0;
   color: #555;
-  font-size: 15px;
+  font-size: calc(15px + 2px);
   line-height: 1.85;
 }
 
@@ -1277,7 +1278,7 @@ img {
 }
 
 .amf-company-section-content .amf-section-title {
-  font-size: clamp(23px, 2vw, 30px);
+  font-size: calc(clamp(23px, 2vw, 30px) + 2px);
   line-height: 1.3;
 }
 
@@ -1285,7 +1286,7 @@ img {
   max-width: 680px;
   margin: 28px 0 0;
   color: #555;
-  font-size: 15px;
+  font-size: calc(15px + 2px);
   line-height: 1.85;
 }
 
@@ -1339,12 +1340,12 @@ html {
 
 .amf-process-grid span {
   color: var(--amf-point-text);
-  font-size: 12px;
+  font-size: calc(12px + 2px);
 }
 
 .amf-process-grid h3 {
   margin: 52px 0 14px;
-  font-size: 28px;
+  font-size: calc(28px + 2px);
   font-weight: 400;
 }
 
@@ -1353,7 +1354,7 @@ html {
 .amf-career-list p {
   margin: 0;
   color: #666;
-  font-size: 13px;
+  font-size: calc(13px + 2px);
   line-height: 1.8;
 }
 
@@ -1403,12 +1404,12 @@ html {
 
 .amf-business-grid span {
   color: var(--amf-point-text);
-  font-size: 12px;
+  font-size: calc(12px + 2px);
 }
 
 .amf-business-grid h3 {
   margin: 48px 0 16px;
-  font-size: 21px;
+  font-size: calc(21px + 2px);
   line-height: 1.35;
   font-weight: 400;
   letter-spacing: -.03em;
@@ -1417,7 +1418,7 @@ html {
 .amf-business-grid p {
   margin: 0;
   color: #666;
-  font-size: 13px;
+  font-size: calc(13px + 2px);
   line-height: 1.7;
 }
 
@@ -1478,7 +1479,7 @@ html {
 .amf-lightbox-figure figcaption {
   margin-top: 14px;
   color: rgba(255,255,255,.7);
-  font-size: 12px;
+  font-size: calc(12px + 2px);
   letter-spacing: .12em;
 }
 
@@ -1495,7 +1496,7 @@ html {
 .amf-lightbox-close {
   top: 24px;
   right: 28px;
-  font-size: 38px;
+  font-size: calc(38px + 2px);
 }
 
 .amf-lightbox-prev,
@@ -1503,7 +1504,7 @@ html {
   top: 50%;
   padding: 18px;
   transform: translateY(-50%);
-  font-size: 54px;
+  font-size: calc(54px + 2px);
 }
 
 .amf-lightbox-prev {
@@ -1526,7 +1527,7 @@ html {
   display: inline-block;
   margin-top: 26px;
   color: #777;
-  font-size: 12px;
+  font-size: calc(12px + 2px);
   text-decoration: underline;
   text-underline-offset: 4px;
 }
@@ -1548,7 +1549,7 @@ html {
   display: grid;
   gap: 7px;
   color: #555;
-  font-size: 12px;
+  font-size: calc(12px + 2px);
 }
 
 .amf-admin-form input,
@@ -1571,7 +1572,7 @@ html {
   color: #fff;
   cursor: pointer;
   font: inherit;
-  font-size: 12px;
+  font-size: calc(12px + 2px);
 }
 
 .amf-admin-items {
@@ -1600,7 +1601,7 @@ html {
   padding: 17px 24px;
   background: var(--amf-point);
   color: #fff;
-  font-size: 13px;
+  font-size: calc(13px + 2px);
 }
 
 
@@ -1639,13 +1640,13 @@ html {
 }
 
 .amf-vision-index {
-  font-size: 12px;
+  font-size: calc(12px + 2px);
   color: #888;
 }
 
 .amf-vision-title {
   margin-top: 100px;
-  font-size: 20px;
+  font-size: calc(20px + 2px);
   line-height: 1.35;
   font-weight: 400;
   letter-spacing: -0.02em;
@@ -1654,7 +1655,7 @@ html {
 .amf-vision-text {
   margin-top: 20px;
   color: #666;
-  font-size: 14px;
+  font-size: calc(14px + 2px);
   line-height: 1.75;
 }
 
@@ -1676,7 +1677,7 @@ html {
 }
 
 .amf-about.amf-landing-navy .amf-section-title {
-  font-size: clamp(22px, 2.1vw, 34px);
+  font-size: calc(clamp(22px, 2.1vw, 34px) + 2px);
   line-height: 1.5;
 }
 
@@ -1746,13 +1747,13 @@ html {
 .amf-landing-vision-grid span,
 .amf-landing-business-grid span {
   color: var(--amf-point-text);
-  font-size: 12px;
+  font-size: calc(12px + 2px);
 }
 
 .amf-landing-vision-grid h3,
 .amf-landing-business-grid h3 {
   margin: 54px 0 14px;
-  font-size: 22px;
+  font-size: calc(22px + 2px);
   line-height: 1.35;
   font-weight: 400;
 }
@@ -1761,7 +1762,7 @@ html {
 .amf-landing-business-grid p {
   margin: 0;
   color: #666;
-  font-size: 13px;
+  font-size: calc(13px + 2px);
   line-height: 1.75;
 }
 
@@ -1830,14 +1831,14 @@ html {
 
 .amf-business-program-copy span {
   color: #e8b85f;
-  font-size: 12px;
+  font-size: calc(12px + 2px);
   letter-spacing: .16em;
 }
 
 .amf-business-program-copy h3 {
   margin: 20px 0 0;
   color: #fff;
-  font-size: clamp(22px, 1.9vw, 30px);
+  font-size: calc(clamp(22px, 1.9vw, 30px) + 2px);
   font-weight: 400;
   line-height: 1.28;
 }
@@ -1845,7 +1846,7 @@ html {
 .amf-business-program-copy p {
   margin: 16px 0 0;
   color: rgba(255,255,255,.82);
-  font-size: 15px;
+  font-size: calc(15px + 2px);
 }
 
 
@@ -1904,7 +1905,7 @@ html {
 }
 
 .amf-social-title {
-  font-size: clamp(20px, 2vw, 28px);
+  font-size: calc(clamp(20px, 2vw, 28px) + 2px);
   font-weight: 400;
   letter-spacing: -0.02em;
 }
@@ -1912,7 +1913,7 @@ html {
 .amf-social-handle {
   margin-top: 20px;
   color: var(--amf-gray);
-  font-size: 14px;
+  font-size: calc(14px + 2px);
 }
 
 .amf-social-button {
@@ -1922,7 +1923,7 @@ html {
   margin-top: 40px;
   padding: 16px 28px;
   border: 1px solid var(--amf-black);
-  font-size: 13px;
+  font-size: calc(13px + 2px);
   transition: all .25s ease;
 }
 
@@ -1947,13 +1948,13 @@ html {
   padding: 0 20px;
   border: 1px solid var(--amf-light-gray);
   text-align: left;
-  font-size: 13px;
+  font-size: calc(13px + 2px);
   transition: background .25s ease, color .25s ease, border-color .25s ease;
 }
 
 .amf-social-links a span {
   color: var(--amf-point-text);
-  font-size: 18px;
+  font-size: calc(18px + 2px);
 }
 
 .amf-social-links a:hover {
@@ -1972,12 +1973,12 @@ html {
 }
 
 .amf-footer-social .amf-social-title {
-  font-size: 22px;
+  font-size: calc(22px + 2px);
 }
 
 .amf-footer-social .amf-social-handle {
   margin-top: 10px;
-  font-size: 12px;
+  font-size: calc(12px + 2px);
 }
 
 .amf-footer-social-links {
@@ -1990,7 +1991,7 @@ html {
 
 .amf-footer-social-links a {
   color: #666;
-  font-size: 12px;
+  font-size: calc(12px + 2px);
   text-decoration: underline;
   text-underline-offset: 4px;
   transition: color .25s ease;
@@ -2015,7 +2016,7 @@ html {
 
 .amf-review-card blockquote {
   margin: 70px 0 0;
-  font-size: 16px;
+  font-size: calc(16px + 2px);
   line-height: 1.65;
   letter-spacing: -.02em;
 }
@@ -2023,7 +2024,7 @@ html {
 .amf-review-source {
   margin-top: 34px;
   color: var(--amf-gray);
-  font-size: 12px;
+  font-size: calc(12px + 2px);
 }
 
 .amf-outline-link {
@@ -2033,12 +2034,12 @@ html {
   margin-top: 36px;
   padding-bottom: 8px;
   border-bottom: 1px solid var(--amf-black);
-  font-size: 13px;
+  font-size: calc(13px + 2px);
 }
 
 .amf-outline-link span {
   color: var(--amf-point-text);
-  font-size: 18px;
+  font-size: calc(18px + 2px);
 }
 
 .amf-notice {
@@ -2067,12 +2068,12 @@ html {
 }
 
 .amf-notice-item strong {
-  font-size: 16px;
+  font-size: calc(16px + 2px);
   font-weight: 400;
 }
 
 .amf-notice-arrow {
-  font-size: 20px;
+  font-size: calc(20px + 2px);
 }
 
 
@@ -2093,7 +2094,7 @@ html {
 
 .amf-contact-title {
   max-width: 800px;
-  font-size: clamp(22px, 2.4vw, 32px);
+  font-size: calc(clamp(22px, 2.4vw, 32px) + 2px);
   line-height: 1.2;
   font-weight: 400;
   letter-spacing: -0.02em;
@@ -2101,7 +2102,7 @@ html {
 
 .amf-contact-description {
   margin-top: 35px;
-  font-size: 16px;
+  font-size: calc(16px + 2px);
   line-height: 1.7;
 }
 
@@ -2111,7 +2112,7 @@ html {
   padding: 18px 32px;
   background: white;
   color: var(--amf-black);
-  font-size: 14px;
+  font-size: calc(14px + 2px);
   transition: transform .25s ease;
 }
 
@@ -2126,7 +2127,7 @@ html {
   flex-wrap: wrap;
   gap: 8px 28px;
   margin-top: 42px;
-  font-size: 13px;
+  font-size: calc(13px + 2px);
 }
 
 .amf-contact-meta a {
@@ -2171,13 +2172,13 @@ html {
 }
 
 .amf-footer-brand {
-  font-size: 18px;
+  font-size: calc(18px + 2px);
 }
 
 .amf-footer p {
   margin: 14px 0 0;
   color: #666;
-  font-size: 13px;
+  font-size: calc(13px + 2px);
 }
 
 .amf-footer-nav,
@@ -2186,7 +2187,7 @@ html {
   flex-direction: column;
   gap: 12px;
   color: #666;
-  font-size: 13px;
+  font-size: calc(13px + 2px);
 }
 
 .amf-footer a:hover {
@@ -2202,7 +2203,7 @@ html {
   padding-top: 18px;
   border-top: 1px solid var(--amf-light-gray);
   color: #777;
-  font-size: 11px;
+  font-size: calc(11px + 2px);
 }
 
 
@@ -2230,7 +2231,7 @@ html {
   }
 
   .amf-brand-mark {
-    font-size: 16px;
+    font-size: calc(16px + 2px);
   }
 
   .amf-site-nav {
@@ -2268,23 +2269,23 @@ html {
 
   .amf-eyebrow {
     margin-bottom: 18px;
-    font-size: 10px;
+    font-size: calc(10px + 2px);
   }
 
   .amf-hero-title {
-    font-size: clamp(28px, 8.5vw, 34px);
+    font-size: calc(clamp(28px, 8.5vw, 34px) + 2px);
     line-height: 1.08;
   }
 
   .amf-hero-korean-title {
     margin-top: 18px;
-    font-size: 24px;
+    font-size: calc(24px + 2px);
   }
 
   .amf-hero-description {
     max-width: 300px;
     margin-top: 20px;
-    font-size: 14px;
+    font-size: calc(14px + 2px);
     line-height: 1.75;
   }
 
@@ -2306,7 +2307,7 @@ html {
   .amf-hero-brand-overlay {
     top: 22px;
     right: 22px;
-    font-size: 16px;
+    font-size: calc(16px + 2px);
   }
 
   .amf-hero-caption {
@@ -2315,7 +2316,7 @@ html {
 
   .amf-hero .amf-text-link {
     margin-top: 24px;
-    font-size: 13px;
+    font-size: calc(13px + 2px);
   }
 
   .amf-section {
@@ -2355,7 +2356,7 @@ html {
 
   .amf-landing-notes-head p {
     margin-top: 20px;
-    font-size: 14px;
+    font-size: calc(14px + 2px);
   }
 
   .amf-landing-notes-grid {
@@ -2397,11 +2398,11 @@ html {
   }
 
   .amf-section-title {
-    font-size: 22px;
+    font-size: calc(22px + 2px);
   }
 
   .amf-section-description {
-    font-size: 14px;
+    font-size: calc(14px + 2px);
   }
 
   .amf-program-grid {
@@ -2423,7 +2424,7 @@ html {
 
   .amf-program-title {
     margin-top: 55px;
-    font-size: 30px;
+    font-size: calc(30px + 2px);
   }
 
   .amf-program-page-intro {
@@ -2433,12 +2434,12 @@ html {
 
   .amf-program-page-intro h2 {
     margin-top: 28px;
-    font-size: 36px;
+    font-size: calc(36px + 2px);
   }
 
   .amf-program-page-intro p {
     margin: 28px 0 0;
-    font-size: 14px;
+    font-size: calc(14px + 2px);
   }
 
   .amf-program-page {
@@ -2448,22 +2449,22 @@ html {
 
   .amf-program-page-index {
     margin-bottom: 42px;
-    font-size: 30px;
+    font-size: calc(30px + 2px);
   }
 
   .amf-program-page-copy h3 {
     margin-top: 22px;
-    font-size: 30px;
+    font-size: calc(30px + 2px);
   }
 
   .amf-program-page-copy p {
     margin-top: 24px;
-    font-size: 14px;
+    font-size: calc(14px + 2px);
   }
 
   .amf-program-page-note {
     margin-top: 55px;
-    font-size: 18px;
+    font-size: calc(18px + 2px);
   }
 
   .amf-detail-hero {
@@ -2483,11 +2484,11 @@ html {
 
   .amf-detail-hero h1 {
     margin-top: 25px;
-    font-size: 36px;
+    font-size: calc(36px + 2px);
   }
 
   .amf-detail-hero p {
-    font-size: 15px;
+    font-size: calc(15px + 2px);
   }
 
   .amf-detail-body {
@@ -2501,7 +2502,7 @@ html {
 
   .amf-detail-intro p {
     margin-top: 25px;
-    font-size: 14px;
+    font-size: calc(14px + 2px);
   }
 
   .amf-detail-image {
@@ -2556,12 +2557,12 @@ html {
   }
 
   .amf-faq-item summary strong {
-    font-size: 15px;
+    font-size: calc(15px + 2px);
   }
 
   .amf-faq-answer {
     margin: 0 0 26px;
-    font-size: 14px;
+    font-size: calc(14px + 2px);
   }
 
   .amf-inquiry-form {
@@ -2574,7 +2575,7 @@ html {
 
   .amf-founder-copy {
     margin-left: 0;
-    font-size: 14px;
+    font-size: calc(14px + 2px);
   }
 
   .amf-founder-layout {
@@ -2643,7 +2644,7 @@ html {
 
   .amf-story-copy {
     margin-left: 0;
-    font-size: 14px;
+    font-size: calc(14px + 2px);
   }
 
   .amf-process-grid,
@@ -2677,7 +2678,7 @@ html {
 
   .amf-vision-title {
     margin-top: 70px;
-    font-size: 23px;
+    font-size: calc(23px + 2px);
   }
 
   .amf-gallery {
@@ -2714,7 +2715,7 @@ html {
   .amf-lightbox-prev,
   .amf-lightbox-next {
     padding: 10px;
-    font-size: 42px;
+    font-size: calc(42px + 2px);
   }
 
   .amf-lightbox-prev {
@@ -2730,7 +2731,7 @@ html {
   }
 
   .amf-social-title {
-    font-size: 28px;
+    font-size: calc(28px + 2px);
   }
 
   .amf-social-links {
@@ -2743,7 +2744,7 @@ html {
   }
 
   .amf-contact-title {
-    font-size: 30px;
+    font-size: calc(30px + 2px);
   }
 
   .amf-contact-meta {
@@ -2759,7 +2760,7 @@ html {
 
   .amf-review-part-heading h2 {
     margin: 18px 0 10px;
-    font-size: clamp(26px, 3vw, 40px);
+    font-size: calc(clamp(26px, 3vw, 40px) + 2px);
     font-weight: 400;
     letter-spacing: -.04em;
   }
@@ -2767,7 +2768,7 @@ html {
   .amf-review-part-heading p {
     margin: 0;
     color: #666;
-    font-size: 14px;
+    font-size: calc(14px + 2px);
   }
 
   .amf-profile-grid,
@@ -2777,7 +2778,7 @@ html {
 
   .amf-profile-copy h3 {
     margin-top: 28px;
-    font-size: 30px;
+    font-size: calc(30px + 2px);
   }
 
   .amf-client-list {
@@ -2796,7 +2797,7 @@ html {
 
   .amf-review-card blockquote {
     margin-top: 45px;
-    font-size: 17px;
+    font-size: calc(17px + 2px);
   }
 
   .amf-notice-item {
@@ -2810,7 +2811,7 @@ html {
   }
 
   .amf-notice-item strong {
-    font-size: 15px;
+    font-size: calc(15px + 2px);
   }
 
   .amf-footer-inner {
