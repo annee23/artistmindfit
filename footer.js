@@ -1,4 +1,37 @@
+const initializePageCharacter = () => {
+  const hero = document.querySelector('.amf-detail-hero');
+  if (!hero || hero.querySelector('.amf-detail-character')) return;
+
+  const characterByPath = {
+    '/about/company/': 'KakaoTalk_20240312_144455756.png',
+    '/about/founder/': 'KakaoTalk_20240312_144449108_08.png',
+    '/programs/': 'KakaoTalk_20240312_144449108_09.png',
+    '/programs/psychology/': 'KakaoTalk_20240312_144449108_08.png',
+    '/programs/art/': 'KakaoTalk_20240312_144449108_08.png',
+    '/programs/music/': 'KakaoTalk_20240312_144449108_09.png',
+    '/programs/theatre/': 'KakaoTalk_20240312_144449108_08.png',
+    '/reviews/psychology/': 'KakaoTalk_20240312_144455756.png',
+    '/reviews/arts-psychology/': 'KakaoTalk_20240312_144449108_09.png',
+    '/notice/news/': 'KakaoTalk_20240312_144449108_08.png',
+    '/notice/qna/': 'KakaoTalk_20240312_144449108_09.png',
+    '/photos/': 'KakaoTalk_20240312_144449108_08.png',
+    '/proposal/': 'KakaoTalk_20240312_144455756.png'
+  };
+  const characterFile = characterByPath[window.location.pathname];
+  if (!characterFile) return;
+
+  const visual = hero.querySelector(':scope > div:first-child');
+  const image = document.createElement('img');
+  image.src = `/images/아티스트마인드핏 대표 캐릭터/${characterFile}`;
+  image.alt = '';
+  image.decoding = 'async';
+  visual.className = 'amf-detail-character';
+  visual.setAttribute('aria-hidden', 'true');
+  visual.append(image);
+};
+
 const initializeSharedNavigation = () => {
+  initializePageCharacter();
   const aboutDropdown = document.querySelector('.amf-site-nav .amf-nav-dropdown');
   if (aboutDropdown) {
     const aboutLink = aboutDropdown.querySelector(':scope > a');
