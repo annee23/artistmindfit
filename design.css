@@ -97,6 +97,10 @@ img {
   backdrop-filter: blur(14px);
 }
 
+.amf-menu-toggle {
+  display: none;
+}
+
 .amf-brand-mark,
 .amf-footer-brand {
   font-size: calc(16px + 2px);
@@ -2328,11 +2332,87 @@ html {
 
   .amf-site-nav {
     display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: calc(100vh - 62px);
+    overflow-y: auto;
+    margin: 0;
+    padding: 8px 22px 16px;
+    grid-template-columns: 1fr;
+    background: rgba(255,255,255,.98);
+    border-bottom: 1px solid rgba(23,23,23,.08);
+    box-shadow: 0 12px 24px rgba(19,40,72,.1);
+  }
+
+  .amf-site-header.is-menu-open .amf-site-nav {
+    display: grid;
+  }
+
+  .amf-site-nav > a,
+  .amf-nav-dropdown > a,
+  .amf-nav-dropdown-trigger {
+    padding: 14px 0;
+    text-align: left;
+    font-size: calc(14px + 2px);
+    font-weight: 500;
+  }
+
+  .amf-nav-dropdown-menu,
+  .amf-nav-dropdown:hover .amf-nav-dropdown-menu {
+    display: flex;
+    flex-direction: column;
+    position: static;
+    transform: none;
+    min-width: 0;
+    padding: 0 0 8px 14px;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .amf-nav-dropdown-menu a {
+    padding: 9px 0;
+    font-size: calc(13px + 2px);
+    color: var(--amf-gray);
   }
 
   .amf-header-cta {
     margin-left: auto;
     padding: 9px 12px;
+  }
+
+  .amf-menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    padding: 0 9px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .amf-menu-toggle span {
+    display: block;
+    height: 2px;
+    background: var(--amf-black);
+    transition: transform .25s ease, opacity .2s ease;
+  }
+
+  .amf-site-header.is-menu-open .amf-menu-toggle span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .amf-site-header.is-menu-open .amf-menu-toggle span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .amf-site-header.is-menu-open .amf-menu-toggle span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
   }
 
   .header .inner {

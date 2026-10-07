@@ -120,3 +120,42 @@ if (document.readyState === 'loading') {
 
 window.setTimeout(initializeSharedNavigation, 0);
 window.addEventListener('load', initializeSharedNavigation, { once: true });
+
+const initializeMobileMenu = () => {
+  const header = document.querySelector('.amf-site-header');
+  const nav = header?.querySelector('.amf-site-nav');
+  if (!header || !nav || header.querySelector('.amf-menu-toggle')) return;
+
+  if (!nav.id) nav.id = 'amf-site-nav';
+  const toggle = document.createElement('button');
+  toggle.type = 'button';
+  toggle.className = 'amf-menu-toggle';
+  toggle.setAttribute('aria-label', '메뉴 열기');
+  toggle.setAttribute('aria-controls', nav.id);
+  toggle.setAttribute('aria-expanded', 'false');
+  toggle.innerHTML = '<span></span><span></span><span></span>';
+  header.append(toggle);
+
+  const setOpen = (open) => {
+    header.classList.toggle('is-menu-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+  };
+
+  toggle.addEventListener('click', () => setOpen(!header.classList.contains('is-menu-open')));
+  nav.addEventListener('click', (event) => {
+    if (event.target.closest('a')) setOpen(false);
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') setOpen(false);
+  });
+  window.matchMedia('(min-width: 768px)').addEventListener('change', (event) => {
+    if (event.matches) setOpen(false);
+  });
+};
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeMobileMenu, { once: true });
+} else {
+  initializeMobileMenu();
+}
