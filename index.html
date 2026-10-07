@@ -104,8 +104,10 @@
 
     <div class="amf-hero-media" aria-label="강의 현장 사진 슬라이드">
       <div class="amf-hero-slides">
-        <img src="images/7J8A2182 (1).JPG" alt="오리엔테이션에서 참여자들과 함께하는 모습">
-        <img src="images/17.JPG" alt="비올라를 들고 있는 아티스트마인드핏 대표 윤솔">
+        <img src="images/홈페이지/메인페이지 1.jpg" alt="예술심리 강의 현장" fetchpriority="high">
+        <img src="images/홈페이지/메인페이지 2.jpg" alt="아티스트마인드핏 프로그램 현장" loading="lazy">
+        <img src="images/홈페이지/메인페이지 3.jpg" alt="참여형 예술교육 활동" loading="lazy">
+        <img src="images/홈페이지/메인페이지6.jpg" alt="예술가 심리교육 현장" loading="lazy">
       </div>
       <div class="amf-hero-brand-overlay" aria-hidden="true">ArtistMind<span>Fit</span></div>
       <div class="amf-hero-caption">LECTURE · CONNECTION · GROWTH</div>
@@ -221,17 +223,6 @@
   </footer>
 
   <script>
-    const heroMedia = document.querySelector('.amf-hero-media');
-    const heroSlides = heroMedia ? heroMedia.querySelectorAll('.amf-hero-slides img') : [];
-
-    if (heroMedia && heroSlides.length > 1) {
-      let heroSlideIndex = 0;
-      window.setInterval(() => {
-        heroSlideIndex = (heroSlideIndex + 1) % heroSlides.length;
-        heroMedia.classList.toggle('has-overlay', heroSlideIndex === 1);
-      }, 6000);
-    }
-
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const revealSections = document.querySelectorAll('.amf-section');
     const revealSection = (section) => {

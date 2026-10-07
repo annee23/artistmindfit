@@ -24,6 +24,16 @@
    GLOBAL
 --------------------------------------------------------- */
 
+::selection {
+  background: #7277b3;
+  color: #fff;
+}
+
+::-moz-selection {
+  background: #7277b3;
+  color: #fff;
+}
+
 body {
   background: var(--amf-bg);
   color: var(--amf-black);
@@ -370,9 +380,9 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center;
   opacity: 0;
-  animation: amf-hero-slide 12s infinite;
+  animation: amf-hero-slide 30s infinite;
 }
 
 .amf-hero-slides img:nth-child(1) {
@@ -384,7 +394,15 @@ img {
 }
 
 .amf-hero-slides img:nth-child(3) {
-  animation-delay: 10s;
+  animation-delay: 12s;
+}
+
+.amf-hero-slides img:nth-child(4) {
+  animation-delay: 18s;
+}
+
+.amf-hero-slides img:nth-child(5) {
+  animation-delay: 24s;
 }
 
 .amf-hero-slides img:only-child {
@@ -393,8 +411,8 @@ img {
 }
 
 @keyframes amf-hero-slide {
-  0%, 45% { opacity: 1; }
-  50%, 95% { opacity: 0; }
+  0%, 16% { opacity: 1; }
+  20%, 96% { opacity: 0; }
   100% { opacity: 1; }
 }
 
@@ -1099,6 +1117,7 @@ img {
 
 .amf-program-grid {
   margin-top: 28px;
+  background: #eceef1;
 }
 
 .amf-inquiry-wrap {
@@ -1217,6 +1236,23 @@ img {
   margin-top: 30px;
 }
 
+.amf-founder-signature {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 18px;
+  margin-top: 16px;
+  color: #222;
+  font-size: calc(16px + 2px);
+  white-space: nowrap;
+}
+
+.amf-founder-signature img {
+  display: block;
+  width: min(133px, 26.6%);
+  height: auto;
+}
+
 .amf-founder-copy strong {
   color: var(--amf-point-text);
   font-weight: 500;
@@ -1259,6 +1295,15 @@ img {
 
 .amf-story-copy p {
   margin: 0 0 22px;
+}
+
+.amf-story-copy ul {
+  margin: 0 0 22px;
+  padding-left: 1.25em;
+}
+
+.amf-story-copy li {
+  margin-bottom: 6px;
 }
 
 .amf-story-copy strong {
@@ -1356,6 +1401,11 @@ html {
   color: #666;
   font-size: calc(13px + 2px);
   line-height: 1.8;
+}
+
+.amf-profile-grid p,
+.amf-career-list p {
+  font-size: calc(13px + 2px + 2pt);
 }
 
 .amf-profile-grid {
@@ -2021,6 +2071,48 @@ html {
   letter-spacing: -.02em;
 }
 
+.amf-review-card blockquote.amf-review-quote:not(.is-expanded) {
+  max-height: calc(1.65em * 5);
+  overflow: hidden;
+}
+
+.amf-review-toggle {
+  display: inline-flex;
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--amf-point-text);
+  cursor: pointer;
+}
+
+.amf-review-toggle::before {
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  content: "";
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform .2s ease;
+}
+
+.amf-review-toggle[aria-expanded="true"]::before {
+  transform: translateY(2px) rotate(225deg);
+}
+
+.amf-review-toggle:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.amf-review-toggle[hidden] {
+  display: none;
+}
+
 .amf-review-source {
   margin-top: 34px;
   color: var(--amf-gray);
@@ -2297,7 +2389,7 @@ html {
   }
 
   .amf-hero-slides img {
-    object-position: 50% top;
+    object-position: center;
   }
 
   .amf-hero-media::after {
