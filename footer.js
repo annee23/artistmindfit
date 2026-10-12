@@ -127,6 +127,13 @@ const initializeMobileMenu = () => {
   if (!header || !nav || header.querySelector('.amf-menu-toggle')) return;
 
   if (!nav.id) nav.id = 'amf-site-nav';
+  const headerCta = header.querySelector('.amf-header-cta');
+  if (headerCta && !nav.querySelector('.amf-nav-cta')) {
+    const navCta = headerCta.cloneNode(true);
+    navCta.classList.remove('amf-header-cta');
+    navCta.classList.add('amf-nav-cta');
+    nav.append(navCta);
+  }
   const toggle = document.createElement('button');
   toggle.type = 'button';
   toggle.className = 'amf-menu-toggle';

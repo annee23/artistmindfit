@@ -101,6 +101,10 @@ img {
   display: none;
 }
 
+.amf-site-nav > a.amf-nav-cta {
+  display: none;
+}
+
 .amf-brand-mark,
 .amf-footer-brand {
   font-size: calc(16px + 2px);
@@ -2379,11 +2383,17 @@ html {
   }
 
   .amf-header-cta {
-    margin-left: auto;
-    padding: 9px 12px;
+    display: none;
+  }
+
+  .amf-site-nav > a.amf-nav-cta {
+    display: block;
+    color: var(--amf-point-text);
   }
 
   .amf-menu-toggle {
+    margin-left: auto;
+    margin-right: -9px;
     display: flex;
     flex-direction: column;
     justify-content: center;

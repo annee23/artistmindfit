@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /notice-admin/
 
 Sitemap: https://artistmindfit.com/sitemap.xml
