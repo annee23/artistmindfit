@@ -134,6 +134,8 @@
         <img src="images/홈페이지/메인페이지 3.jpg" alt="참여형 예술교육 활동" loading="lazy">
         <img src="images/홈페이지/메인페이지6.jpg" alt="예술가 심리교육 현장" loading="lazy">
       </div>
+      <button class="amf-hero-arrow amf-hero-arrow-prev" type="button" aria-label="이전 사진"></button>
+      <button class="amf-hero-arrow amf-hero-arrow-next" type="button" aria-label="다음 사진"></button>
       <div class="amf-hero-brand-overlay" aria-hidden="true">ArtistMind<span>Fit</span></div>
       <div class="amf-hero-caption">LECTURE · CONNECTION · GROWTH</div>
     </div>
@@ -166,7 +168,7 @@
 
 <div class="amf-business-program-grid">
   <article class="amf-business-program-card">
-    <a href="/programs/psychology/">
+    <a href="/programs/psychology/#solution">
       <img
         src="images/Screenshot 2026-09-23 at 1.28.48 PM.jpg"
         alt="감정을 표현한 종이와 색연필"
@@ -193,6 +195,8 @@
     </a>
   </article>
 </div>
+  </div>
+</section>
 
 <section class="amf-section amf-landing-business amf-landing-white">
   <div class="amf-section-inner">
@@ -230,7 +234,7 @@
     <div class="amf-footer-inner">
       <div>
         <div class="amf-footer-brand">ArtistMind<span>Fit</span></div>
-        <p>예술가를 위한 심리교육 기획사</p>
+        <p>심리교육 기획사</p>
       </div>
       <div class="amf-footer-nav">
         <a href="/about/">소개</a>
@@ -251,6 +255,23 @@
 
   <script>
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const heroSlides = document.querySelectorAll('.amf-hero-slides img');
+    if (heroSlides.length > 1) {
+      let heroIndex = 0;
+      let heroTimer;
+      const showHeroSlide = (index) => {
+        heroIndex = (index + heroSlides.length) % heroSlides.length;
+        heroSlides.forEach((slide, i) => slide.classList.toggle('is-active', i === heroIndex));
+      };
+      const startHeroTimer = () => {
+        clearInterval(heroTimer);
+        if (!reduceMotion) heroTimer = setInterval(() => showHeroSlide(heroIndex + 1), 6000);
+      };
+      document.querySelector('.amf-hero-arrow-prev').addEventListener('click', () => { showHeroSlide(heroIndex - 1); startHeroTimer(); });
+      document.querySelector('.amf-hero-arrow-next').addEventListener('click', () => { showHeroSlide(heroIndex + 1); startHeroTimer(); });
+      showHeroSlide(0);
+      startHeroTimer();
+    }
     const revealSections = document.querySelectorAll('.amf-section');
     const revealSection = (section) => {
       section.classList.add('is-visible');
