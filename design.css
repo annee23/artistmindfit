@@ -1292,7 +1292,7 @@ img {
   max-width: 720px;
   margin: 30px 0 0;
   color: #555;
-  font-size: calc(16px + 2px);
+  font-size: calc(13px + 2px + 2pt);
   line-height: 2;
 }
 
@@ -1347,7 +1347,7 @@ img {
   gap: 18px;
   margin-top: 16px;
   color: #222;
-  font-size: calc(16px + 2px);
+  font-size: calc(13px + 2px + 2pt);
   white-space: nowrap;
 }
 
@@ -1544,8 +1544,30 @@ html {
   margin-top: 28px;
 }
 
+.amf-career-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 48px;
+}
+
+.amf-career-title {
+  margin: 0 0 18px;
+  color: var(--amf-black);
+  font-size: calc(13px + 2px + 4pt);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.amf-career-title span {
+  display: block;
+  margin-top: 4px;
+  color: #999;
+  font-size: calc(12px + 2px);
+  font-weight: 400;
+}
+
 .amf-career-list {
-  max-width: 820px;
+  max-width: none;
   margin: 54px 0 0;
   text-align: left;
   padding-top: 28px;
@@ -2951,6 +2973,16 @@ button.amf-admin-link {
     font-size: calc(14px + 2px);
   }
 
+  .amf-profile-grid p,
+  .amf-career-list p,
+  .amf-founder-signature {
+    font-size: calc(14px + 2px);
+  }
+
+  .amf-career-title {
+    font-size: calc(14px + 2px + 2pt);
+  }
+
   .amf-founder-layout {
     grid-template-columns: 1fr;
     gap: 36px;
@@ -3038,6 +3070,11 @@ button.amf-admin-link {
 
   .amf-career-list {
     margin-left: 0;
+  }
+
+  .amf-career-columns {
+    grid-template-columns: 1fr;
+    gap: 36px;
   }
 
   .amf-vision-grid {
