@@ -332,6 +332,13 @@ img {
   color: #566273;
 }
 
+.amf-hero-description-lead {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--amf-black);
+  font-weight: 500;
+}
+
 .amf-hero-korean-title,
 .amf-hero-description,
 .amf-hero .amf-eyebrow,
@@ -1193,22 +1200,28 @@ img {
 }
 
 .amf-inquiry-types {
-  grid-column: 1 / -1;
-  display: grid;
-  gap: 10px;
-  margin: 0;
-  padding: 0;
-  border: 0;
+  display: contents;
 }
 
-.amf-inquiry-types legend {
-  margin-bottom: 10px;
-  padding: 0;
+.amf-inquiry-form > input {
+  height: 50px;
+}
+
+.amf-inquiry-types-title {
+  align-self: start;
+  padding-top: 9px;
+  line-height: 32px;
   color: #555;
   font-size: calc(13px + 2px);
 }
 
-.amf-inquiry-types label {
+.amf-inquiry-options {
+  display: grid;
+  gap: 10px;
+  padding-top: 9px;
+}
+
+.amf-inquiry-options label {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -1216,7 +1229,31 @@ img {
   cursor: pointer;
 }
 
-.amf-inquiry-types input[type="checkbox"] {
+.amf-inquiry-option-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+}
+
+.amf-inquiry-options > * {
+  min-height: 32px;
+}
+
+.amf-inquiry-form .amf-inquiry-small {
+  flex: none;
+  width: 150px;
+  height: 32px;
+  padding: 0 10px;
+  font-size: calc(13px + 2px);
+}
+
+.amf-inquiry-small::placeholder {
+  color: #999;
+}
+
+.amf-inquiry-options input[type="radio"] {
+  flex: none;
   width: 18px;
   height: 18px;
   margin: 0;
@@ -1330,6 +1367,10 @@ img {
   border-top: 1px solid rgba(23,23,23,.12);
 }
 
+.amf-philosophy + .amf-about {
+  border-top: 1px solid rgba(23,23,23,.12);
+}
+
 .amf-slogan-inner {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -1404,6 +1445,25 @@ img {
 
 .amf-company-section-content .amf-process-grid {
   margin-top: 42px;
+}
+
+.amf-philosophy-images {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.amf-philosophy-images img {
+  display: block;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.amf-philosophy-images img:last-child {
+  object-fit: contain;
+  background: #fff;
 }
 
 .amf-company-section-content .amf-business-grid {
@@ -1610,6 +1670,49 @@ html {
   line-height: 1;
 }
 
+.amf-lightbox-delete {
+  top: 32px;
+  left: 28px;
+  font-size: calc(14px + 2px);
+  opacity: .75;
+}
+
+.amf-lightbox-delete[hidden] {
+  display: none;
+}
+
+.amf-photo-gallery .amf-gallery-item[hidden] {
+  display: none;
+}
+
+.amf-photo-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.amf-photo-admin {
+  margin-top: 40px;
+}
+
+.amf-photo-status {
+  margin: 12px 0 0;
+  color: #777;
+  font-size: calc(13px + 2px);
+}
+
+.amf-photo-status[hidden] {
+  display: none;
+}
+
+button.amf-admin-link {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+}
+
 .amf-lightbox-close {
   top: 24px;
   right: 28px;
@@ -1643,10 +1746,9 @@ html {
 .amf-admin-link {
   display: inline-block;
   margin-top: 26px;
-  color: #777;
+  color: #fff;
   font-size: calc(12px + 2px);
-  text-decoration: underline;
-  text-underline-offset: 4px;
+  text-decoration: none;
 }
 
 .amf-admin-panel {
@@ -2183,6 +2285,16 @@ html {
   display: none;
 }
 
+.amf-review-card[hidden] {
+  display: none;
+}
+
+.amf-review-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
 .amf-review-source {
   margin-top: 34px;
   color: var(--amf-gray);
@@ -2648,6 +2760,10 @@ html {
 
   .amf-company-section-content .amf-process-grid {
     margin-top: 32px;
+  }
+
+  .amf-philosophy-images img {
+    height: 180px;
   }
 
   .amf-section-number {

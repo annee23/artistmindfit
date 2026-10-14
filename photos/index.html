@@ -7,7 +7,7 @@
   <meta name="description" content="아티스트마인드핏의 예술가 심리교육 강의와 프로그램 현장 사진을 만나보세요.">
   <link rel="canonical" href="https://artistmindfit.com/photos/">
   <meta property="og:url" content="https://artistmindfit.com/photos/">
-  <link rel="stylesheet" href="design.css">
+  <link rel="stylesheet" href="design.css?v=20261014">
   <link rel="icon" href="/images/favicons/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicons/favicon-16x16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicons/favicon-32x32.png">
@@ -72,11 +72,20 @@
       <div class="amf-gallery-item"><img src="images/강의사진/청년대상 3.jpg" alt="청년 대상 프로그램" loading="lazy"></div>
       <div class="amf-gallery-item"><img src="images/강의사진/학교 강의 옆모습.jpg" alt="학교 강의 현장" loading="lazy"></div>
     </div>
+    <div class="amf-photo-more">
+      <button class="amf-review-toggle" id="photo-more-button" type="button" aria-label="사진 더 보기" aria-expanded="false" hidden></button>
+    </div>
+    <div class="amf-photo-admin">
+      <button class="amf-admin-link" id="photo-add-button" type="button">사진 추가하기</button>
+      <input id="photo-file-input" type="file" accept="image/*" multiple hidden>
+      <p class="amf-photo-status" id="photo-status" role="status" hidden></p>
+    </div>
   </section>
 </main>
 
 <div class="amf-lightbox" id="photo-lightbox" aria-hidden="true" role="dialog" aria-label="사진 크게 보기">
   <button class="amf-lightbox-close" type="button" aria-label="사진 닫기">×</button>
+  <button class="amf-lightbox-delete" type="button" hidden>삭제</button>
   <button class="amf-lightbox-prev" type="button" aria-label="이전 사진">‹</button>
   <figure class="amf-lightbox-figure">
     <img src="" alt="">
@@ -89,23 +98,65 @@
   <div class="amf-footer-inner">
     <div><div class="amf-footer-brand">ArtistMind<span>Fit</span></div><p>심리교육 기획사</p></div>
     <div class="amf-footer-nav"><a href="/about/">소개</a><a href="/programs/">프로그램</a><a href="/reviews/">강의 후기</a><a href="/notice/">공지</a></div>
-    <div class="amf-footer-contact"><a href="tel:01063068231">010-6306-8231</a><a href="mailto:yoon@artistminfit.com">yoon@artistminfit.com</a></div>
+    <div class="amf-footer-contact"><a href="tel:01063068231">010-6306-8231</a><a href="mailto:yoon@artistmindfit.com">yoon@artistmindfit.com</a></div>
   </div>
-  <div class="amf-footer-bottom"><span>사업자등록번호 244-26-01593 · 대표 윤솔</span><span>© 2026 ArtistMindFit. All rights reserved.</span></div>
+  <div class="amf-footer-bottom"><span>사업자등록번호 · 244-26-01593  |  대표자 · 윤솔</span><span>© 2026 ArtistMindFit. All rights reserved.</span></div>
 </footer>
 <script>
-  const photoItems = [...document.querySelectorAll('.amf-photo-gallery .amf-gallery-item')];
+  const githubRepo = 'annee23/artistmindfit';
+  const uploadDir = 'images/uploads';
+  const manifestPath = `${uploadDir}/manifest.json`;
+  const tokenStorageKey = 'artistMindFitGithubToken';
+  const photoGallery = document.querySelector('.amf-photo-gallery');
   const photoLightbox = document.querySelector('#photo-lightbox');
   const photoLightboxImage = photoLightbox.querySelector('img');
   const photoLightboxCaption = photoLightbox.querySelector('figcaption');
+  const photoDeleteButton = photoLightbox.querySelector('.amf-lightbox-delete');
+  const photoAddButton = document.querySelector('#photo-add-button');
+  const photoFileInput = document.querySelector('#photo-file-input');
+  const photoStatus = document.querySelector('#photo-status');
+  const photoMoreButton = document.querySelector('#photo-more-button');
+  const visiblePhotoRows = 3;
+  let photosExpanded = false;
+  let photoItems = [];
   let activePhotoIndex = 0;
+  let uploadedPhotos = [];
+  let statusTimer;
+
+  const getToken = () => localStorage.getItem(tokenStorageKey) || '';
+
+  const setStatus = (message, autoHide) => {
+    clearTimeout(statusTimer);
+    photoStatus.textContent = message;
+    photoStatus.hidden = !message;
+    if (message && autoHide) statusTimer = setTimeout(() => setStatus(''), 8000);
+  };
+
+  const applyPhotoCollapse = () => {
+    const columns = getComputedStyle(photoGallery).gridTemplateColumns.split(' ').length;
+    const limit = columns * visiblePhotoRows;
+    photoItems.forEach((item, index) => {
+      item.hidden = !photosExpanded && index >= limit;
+    });
+    photoMoreButton.hidden = photoItems.length <= limit;
+  };
+
+  photoMoreButton.addEventListener('click', () => {
+    photosExpanded = !photosExpanded;
+    photoMoreButton.setAttribute('aria-expanded', String(photosExpanded));
+    photoMoreButton.setAttribute('aria-label', photosExpanded ? '사진 접기' : '사진 더 보기');
+    applyPhotoCollapse();
+  });
+  window.addEventListener('resize', applyPhotoCollapse);
 
   const showPhoto = (index) => {
     activePhotoIndex = (index + photoItems.length) % photoItems.length;
-    const sourceImage = photoItems[activePhotoIndex].querySelector('img');
+    const item = photoItems[activePhotoIndex];
+    const sourceImage = item.querySelector('img');
     photoLightboxImage.src = sourceImage.src;
     photoLightboxImage.alt = sourceImage.alt;
     photoLightboxCaption.textContent = `${activePhotoIndex + 1} / ${photoItems.length}`;
+    photoDeleteButton.hidden = !(item.dataset.photoId && getToken());
   };
 
   const openPhoto = (index) => {
@@ -122,18 +173,159 @@
     document.body.classList.remove('amf-lightbox-open');
   };
 
-  photoItems.forEach((item, index) => {
-    item.tabIndex = 0;
-    item.setAttribute('role', 'button');
-    item.setAttribute('aria-label', `${index + 1}번 사진 크게 보기`);
-    item.addEventListener('click', () => openPhoto(index));
-    item.addEventListener('keydown', (event) => {
-      if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault();
-        openPhoto(index);
-      }
+  const bindPhotoItems = () => {
+    photoItems = [...photoGallery.querySelectorAll('.amf-gallery-item')];
+    photoItems.forEach((item, index) => {
+      item.tabIndex = 0;
+      item.setAttribute('role', 'button');
+      item.setAttribute('aria-label', `${index + 1}번 사진 크게 보기`);
+      item.onclick = () => openPhoto(index);
+      item.onkeydown = (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openPhoto(index);
+        }
+      };
     });
+    applyPhotoCollapse();
+  };
+
+  const renderUploadedPhotos = () => {
+    photoGallery.querySelectorAll('[data-photo-id]').forEach((item) => item.remove());
+    const fragment = document.createDocumentFragment();
+    uploadedPhotos.forEach((photo) => {
+      const item = document.createElement('div');
+      item.className = 'amf-gallery-item';
+      item.dataset.photoId = photo.id;
+      const image = document.createElement('img');
+      image.src = photo.preview || `/${uploadDir}/${photo.file}`;
+      image.alt = '현장 사진';
+      image.loading = 'lazy';
+      item.append(image);
+      fragment.append(item);
+    });
+    photoGallery.prepend(fragment);
+    bindPhotoItems();
+  };
+
+  const loadUploadedPhotos = async () => {
+    try {
+      const response = await fetch(`/${manifestPath}?t=${Date.now()}`, { cache: 'no-store' });
+      uploadedPhotos = response.ok ? await response.json() : [];
+    } catch (error) {
+      uploadedPhotos = [];
+    }
+    renderUploadedPhotos();
+  };
+
+  const githubRequest = async (path, method, body) => {
+    const response = await fetch(`https://api.github.com/repos/${githubRepo}/contents/${path}${method === 'GET' ? `?t=${Date.now()}` : ''}`, {
+      method,
+      headers: {
+        Accept: 'application/vnd.github+json',
+        Authorization: `Bearer ${getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: body ? JSON.stringify(body) : undefined
+    });
+    if (response.status === 401) {
+      localStorage.removeItem(tokenStorageKey);
+      throw new Error('토큰이 올바르지 않거나 만료되었습니다. 다시 시도해 새 토큰을 입력해주세요.');
+    }
+    return response;
+  };
+
+  const encodeText = (text) => btoa(String.fromCharCode(...new TextEncoder().encode(text)));
+  const decodeText = (base64) => new TextDecoder().decode(Uint8Array.from(atob(base64.replace(/\n/g, '')), (char) => char.charCodeAt(0)));
+
+  const updateManifest = async (change, message) => {
+    for (let attempt = 0; attempt < 3; attempt += 1) {
+      const current = await githubRequest(manifestPath, 'GET');
+      let sha;
+      let list = [];
+      if (current.ok) {
+        const data = await current.json();
+        sha = data.sha;
+        list = JSON.parse(decodeText(data.content));
+      }
+      const saved = await githubRequest(manifestPath, 'PUT', {
+        message,
+        content: encodeText(JSON.stringify(change(list), null, 2)),
+        sha
+      });
+      if (saved.ok) return;
+      if (saved.status !== 409 && saved.status !== 422) throw new Error('목록을 저장하지 못했습니다. 토큰 권한(Contents: Read and write)을 확인해주세요.');
+    }
+    throw new Error('목록을 저장하지 못했습니다. 잠시 후 다시 시도해주세요.');
+  };
+
+  const resizePhoto = async (file) => {
+    const maxSize = 1400;
+    const bitmap = await createImageBitmap(file, { imageOrientation: 'from-image' });
+    const scale = Math.min(1, maxSize / Math.max(bitmap.width, bitmap.height));
+    const canvas = document.createElement('canvas');
+    canvas.width = Math.round(bitmap.width * scale);
+    canvas.height = Math.round(bitmap.height * scale);
+    canvas.getContext('2d').drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+    return canvas.toDataURL('image/jpeg', 0.8);
+  };
+
+  photoAddButton.addEventListener('click', () => photoFileInput.click());
+
+  photoFileInput.addEventListener('change', async () => {
+    const files = [...photoFileInput.files].filter((file) => file.type.startsWith('image/'));
+    photoFileInput.value = '';
+    if (!files.length) return;
+    if (!getToken()) {
+      const token = (prompt('GitHub 토큰을 입력해주세요. 이 브라우저에만 저장됩니다.') || '').trim();
+      if (!token) return;
+      localStorage.setItem(tokenStorageKey, token);
+    }
+    let done = 0;
+    try {
+      for (const file of files) {
+        setStatus(`사진 업로드 중... (${done + 1}/${files.length})`);
+        const dataUrl = await resizePhoto(file);
+        const id = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+        const uploaded = await githubRequest(`${uploadDir}/${id}.jpg`, 'PUT', {
+          message: `현장 사진 추가 ${id}`,
+          content: dataUrl.split(',')[1]
+        });
+        if (!uploaded.ok) throw new Error('사진을 업로드하지 못했습니다. 토큰 권한(Contents: Read and write)을 확인해주세요.');
+        await updateManifest((list) => [{ id, file: `${id}.jpg` }, ...list], `현장 사진 목록 추가 ${id}`);
+        uploadedPhotos.unshift({ id, file: `${id}.jpg`, preview: dataUrl });
+        renderUploadedPhotos();
+        done += 1;
+      }
+      setStatus('업로드 완료. 모든 방문자에게 보이기까지 1~2분 걸릴 수 있습니다.', true);
+    } catch (error) {
+      setStatus(done ? `${done}장 업로드 후 중단됨. ${error.message}` : error.message, true);
+    }
   });
+
+  photoDeleteButton.addEventListener('click', async () => {
+    const item = photoItems[activePhotoIndex];
+    const photo = item && uploadedPhotos.find((entry) => entry.id === item.dataset.photoId);
+    if (!photo || !confirm('이 사진을 삭제할까요?')) return;
+    closePhoto();
+    try {
+      setStatus('사진 삭제 중...');
+      const info = await githubRequest(`${uploadDir}/${photo.file}`, 'GET');
+      if (info.ok) {
+        const { sha } = await info.json();
+        await githubRequest(`${uploadDir}/${photo.file}`, 'DELETE', { message: `현장 사진 삭제 ${photo.id}`, sha });
+      }
+      await updateManifest((list) => list.filter((entry) => entry.id !== photo.id), `현장 사진 목록 삭제 ${photo.id}`);
+      uploadedPhotos = uploadedPhotos.filter((entry) => entry.id !== photo.id);
+      renderUploadedPhotos();
+      setStatus('삭제했습니다. 모든 방문자에게 반영되기까지 1~2분 걸릴 수 있습니다.', true);
+    } catch (error) {
+      setStatus(error.message, true);
+    }
+  });
+
+  bindPhotoItems();
+  loadUploadedPhotos();
 
   photoLightbox.querySelector('.amf-lightbox-close').addEventListener('click', closePhoto);
   photoLightbox.querySelector('.amf-lightbox-prev').addEventListener('click', () => showPhoto(activePhotoIndex - 1));
@@ -149,5 +341,5 @@
   });
 </script>
 </body>
-<script src="/footer.js"></script>
+<script src="/footer.js?v=20261014"></script>
 </html>

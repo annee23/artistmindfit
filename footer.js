@@ -166,3 +166,45 @@ if (document.readyState === 'loading') {
 } else {
   initializeMobileMenu();
 }
+
+const initializeReviewCollapse = () => {
+  const grid = document.querySelector('.amf-review-grid');
+  if (!grid) return;
+
+  const visibleRows = 8;
+  const cards = [...grid.querySelectorAll(':scope > .amf-review-card')];
+  const more = document.createElement('div');
+  more.className = 'amf-review-more';
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'amf-review-toggle';
+  button.setAttribute('aria-expanded', 'false');
+  button.setAttribute('aria-label', '후기 더 보기');
+  more.append(button);
+  grid.after(more);
+
+  let expanded = false;
+  const apply = () => {
+    const limit = getComputedStyle(grid).gridTemplateColumns.split(' ').length * visibleRows;
+    cards.forEach((card, index) => {
+      card.hidden = !expanded && index >= limit;
+    });
+    button.hidden = cards.length <= limit;
+  };
+
+  button.addEventListener('click', () => {
+    expanded = !expanded;
+    button.setAttribute('aria-expanded', String(expanded));
+    button.setAttribute('aria-label', expanded ? '후기 접기' : '후기 더 보기');
+    apply();
+    window.dispatchEvent(new Event('resize'));
+  });
+  window.addEventListener('resize', apply);
+  apply();
+};
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeReviewCollapse, { once: true });
+} else {
+  initializeReviewCollapse();
+}
