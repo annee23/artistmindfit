@@ -1794,6 +1794,7 @@ button.amf-admin-link {
 }
 
 .amf-admin-form input,
+.amf-admin-form select,
 .amf-admin-form textarea {
   width: 100%;
   padding: 12px;

@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ko">
+<head><base href="/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>후기 관리 | Artist Mind Fit</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="design.css?v=20261014d">
+  <link rel="icon" href="/images/favicons/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicons/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+<header class="amf-site-header">
+  <a href="/" class="amf-brand-mark">ArtistMind<span>Fit</span></a>
+  <nav class="amf-site-nav" aria-label="주요 메뉴">
+    <div class="amf-nav-dropdown"><a href="/about/">소개</a><div class="amf-nav-dropdown-menu"><a href="/about/">회사소개</a><a href="/about/">대표소개</a></div></div>
+    <a href="/programs/">프로그램</a>
+    <a href="/reviews/">강의 후기</a>
+    <div class="amf-nav-dropdown"><a href="/notice/">공지</a><div class="amf-nav-dropdown-menu"><a href="/notice/">소식</a><a href="/qna/">F&amp;Q</a></div></div>
+  </nav>
+  <a href="https://pf.kakao.com/_CSBGG" target="_blank" rel="noopener" class="amf-header-cta">문의하기 ↗</a>
+</header>
+
+<main>
+  <section class="amf-detail-hero">
+    <div></div>
+    <div class="amf-detail-hero-copy">
+      <div class="amf-section-number">REVIEW ADMIN</div>
+      <h1>후기를<br><em>추가합니다.</em></h1>
+      <p>작성한 후기는 이 브라우저에 저장되며 강의 후기 페이지 맨 위에 바로 표시됩니다.</p>
+    </div>
+  </section>
+
+  <section class="amf-detail-body">
+    <div class="amf-admin-panel">
+      <form class="amf-admin-form" id="review-form">
+        <label>표시할 페이지
+          <select name="page">
+            <option value="psychology">심리 프로그램 후기</option>
+            <option value="arts-psychology">예술·심리 프로그램 후기</option>
+          </select>
+        </label>
+        <label>분류
+          <input name="type" type="text" required maxlength="40" list="review-types" placeholder="예: PSYCHOLOGICAL WORKSHOP">
+          <datalist id="review-types">
+            <option value="CAREER WORKSHOP"></option>
+            <option value="PSYCHOLOGICAL WORKSHOP"></option>
+            <option value="AUDITION WORKSHOP"></option>
+            <option value="1:1 MENTAL COACHING"></option>
+            <option value="ARTIST GATHERING"></option>
+            <option value="ONLINE SEMINAR"></option>
+            <option value="DRAMA THERAPY"></option>
+            <option value="ART EDUCATION"></option>
+            <option value="MUSIC EDUCATION"></option>
+          </datalist>
+        </label>
+        <label>후기 내용
+          <textarea name="text" rows="6" required maxlength="2000" placeholder="후기 내용을 입력하세요"></textarea>
+        </label>
+        <label>작성자 / 출처
+          <input name="source" type="text" required maxlength="60" placeholder="예: 김O수 또는 예술가대상 워크숍 참여자">
+        </label>
+        <button type="submit">후기 저장하기</button>
+      </form>
+      <div class="amf-admin-items" id="saved-reviews"></div>
+      <a href="/reviews/" class="amf-text-link">강의 후기 페이지 보기 <span>↗</span></a>
+    </div>
+  </section>
+</main>
+
+<footer class="amf-footer">
+  <div class="amf-footer-inner">
+    <div><div class="amf-footer-brand">ArtistMind<span>Fit</span></div><p>심리교육 기획사</p></div>
+    <div class="amf-footer-nav"><a href="/about/">소개</a><a href="/programs/">프로그램</a><a href="/reviews/">강의 후기</a><a href="/notice/">공지</a></div>
+    <div class="amf-footer-contact"><a href="tel:01063068231">010-6306-8231</a><a href="mailto:yoon@artistmindfit.com">yoon@artistmindfit.com</a></div>
+  </div>
+  <div class="amf-footer-bottom"><span>사업자등록번호 · 244-26-01593  |  대표자 · 윤솔</span><span>© 2026 ArtistMindFit. All rights reserved.</span></div>
+</footer>
+
+<script>
+  const reviewStorageKey = 'artistMindFitReviews';
+  const pageLabels = { 'psychology': '심리', 'arts-psychology': '예술·심리' };
+  const form = document.querySelector('#review-form');
+  const savedReviews = document.querySelector('#saved-reviews');
+
+  const getReviews = () => JSON.parse(localStorage.getItem(reviewStorageKey) || '[]');
+  const saveReviews = (reviews) => localStorage.setItem(reviewStorageKey, JSON.stringify(reviews));
+
+  const renderReviews = () => {
+    savedReviews.replaceChildren();
+    getReviews().forEach((review, index) => {
+      const item = document.createElement('div');
+      item.className = 'amf-admin-item';
+      const title = document.createElement('strong');
+      const preview = review.text.length > 40 ? review.text.slice(0, 40) + '…' : review.text;
+      title.textContent = `[${pageLabels[review.page] || review.page}] ${review.source} · ${preview}`;
+      const deleteButton = document.createElement('button');
+      deleteButton.className = 'amf-admin-delete';
+      deleteButton.type = 'button';
+      deleteButton.textContent = '삭제';
+      deleteButton.addEventListener('click', () => {
+        const reviews = getReviews();
+        reviews.splice(index, 1);
+        saveReviews(reviews);
+        renderReviews();
+      });
+      item.append(title, deleteButton);
+      savedReviews.append(item);
+    });
+  };
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const formData = new FormData(form);
+    const reviews = getReviews();
+    reviews.unshift({
+      page: formData.get('page'),
+      type: formData.get('type').trim().toUpperCase(),
+      text: formData.get('text').trim(),
+      source: formData.get('source').trim()
+    });
+    saveReviews(reviews);
+    form.reset();
+    renderReviews();
+  });
+
+  renderReviews();
+</script>
+</body><script src="/footer.js?v=20261014d"></script>
+</html>

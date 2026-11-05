@@ -1,9 +1,11 @@
 User-agent: Yeti
 Allow: /
 Disallow: /notice-admin/
+Disallow: /review-admin/
 
 User-agent: *
 Allow: /
 Disallow: /notice-admin/
+Disallow: /review-admin/
 
 Sitemap: https://artistmindfit.com/sitemap.xml
