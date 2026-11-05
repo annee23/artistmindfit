@@ -1793,6 +1793,10 @@ button.amf-admin-link {
   font-size: calc(12px + 2px);
 }
 
+.amf-admin-form label[hidden] {
+  display: none;
+}
+
 .amf-admin-form input,
 .amf-admin-form select,
 .amf-admin-form textarea {

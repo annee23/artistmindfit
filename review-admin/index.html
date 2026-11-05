@@ -44,18 +44,10 @@
           </select>
         </label>
         <label>분류
-          <input name="type" type="text" required maxlength="40" list="review-types" placeholder="예: PSYCHOLOGICAL WORKSHOP">
-          <datalist id="review-types">
-            <option value="CAREER WORKSHOP"></option>
-            <option value="PSYCHOLOGICAL WORKSHOP"></option>
-            <option value="AUDITION WORKSHOP"></option>
-            <option value="1:1 MENTAL COACHING"></option>
-            <option value="ARTIST GATHERING"></option>
-            <option value="ONLINE SEMINAR"></option>
-            <option value="DRAMA THERAPY"></option>
-            <option value="ART EDUCATION"></option>
-            <option value="MUSIC EDUCATION"></option>
-          </datalist>
+          <select name="typeChoice" id="review-type-select"></select>
+        </label>
+        <label id="review-type-custom" hidden>새 분류 이름
+          <input name="typeCustom" type="text" maxlength="40" placeholder="예: AUDITION WORKSHOP">
         </label>
         <label>후기 내용
           <textarea name="text" rows="6" required maxlength="2000" placeholder="후기 내용을 입력하세요"></textarea>
@@ -90,7 +82,27 @@
   const submitButton = form.querySelector('button[type="submit"]');
   const savedReviews = document.querySelector('#saved-reviews');
   const statusMessage = document.querySelector('#review-status');
+  const defaultTypes = ['CAREER WORKSHOP', 'PSYCHOLOGICAL WORKSHOP', 'AUDITION WORKSHOP', '1:1 MENTAL COACHING', 'ARTIST GATHERING', 'ONLINE SEMINAR', 'DRAMA THERAPY', 'ARTIST PSYCHOLOGY', 'PSYCHOLOGY WORKSHOP', 'ART EDUCATION', 'ART PSYCHOLOGICAL WORKSHOP', 'CREATIVE EDUCATION', 'DRAMA EDUCATION', 'MUSIC EDUCATION'];
+  const typeSelect = document.querySelector('#review-type-select');
+  const customTypeLabel = document.querySelector('#review-type-custom');
+  const customTypeInput = form.elements['typeCustom'];
+  const newTypeValue = '__new__';
   let reviews = [];
+
+  const renderTypeOptions = (selected) => {
+    const types = [...new Set([...defaultTypes, ...reviews.map((review) => review.type)])];
+    typeSelect.replaceChildren(...types.map((type) => new Option(type, type)), new Option('+ 새 분류 추가', newTypeValue));
+    typeSelect.value = types.includes(selected) ? selected : types[0];
+    toggleCustomType();
+  };
+
+  const toggleCustomType = () => {
+    const isNew = typeSelect.value === newTypeValue;
+    customTypeLabel.hidden = !isNew;
+    customTypeInput.required = isNew;
+  };
+
+  typeSelect.addEventListener('change', toggleCustomType);
 
   const getToken = () => localStorage.getItem(tokenStorageKey) || '';
 
@@ -187,6 +199,7 @@
       reviews = [];
     }
     renderReviews();
+    renderTypeOptions();
   };
 
   form.addEventListener('submit', async (event) => {
@@ -197,7 +210,7 @@
     const review = {
       id,
       page: formData.get('page'),
-      type: formData.get('type').trim().toUpperCase(),
+      type: (formData.get('typeChoice') === newTypeValue ? formData.get('typeCustom') : formData.get('typeChoice')).trim().toUpperCase(),
       text: formData.get('text').trim(),
       source: formData.get('source').trim()
     };
@@ -206,6 +219,7 @@
     try {
       reviews = await updateReviews((list) => [review, ...list], `후기 추가 ${id}`);
       form.reset();
+      renderTypeOptions(review.type);
       setStatus('저장 완료. 몇 분 안에 모든 방문자에게 반영됩니다.');
       renderReviews();
     } catch (error) {
