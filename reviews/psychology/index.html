@@ -218,31 +218,50 @@
 <script>
   (() => {
     const grid = document.querySelector('.amf-review-grid');
-    const saved = JSON.parse(localStorage.getItem('artistMindFitReviews') || '[]').filter((review) => review.page === 'psychology');
-    const cards = saved.map((review, index) => {
-      const card = document.createElement('article');
-      card.className = 'amf-review-card';
-      const type = document.createElement('div');
-      type.className = 'amf-review-type';
-      type.textContent = review.type;
-      const quote = document.createElement('blockquote');
-      quote.className = 'amf-review-quote';
-      quote.id = 'saved-review-' + index;
-      quote.textContent = '“' + review.text + '”';
-      const toggle = document.createElement('button');
-      toggle.className = 'amf-review-toggle';
-      toggle.type = 'button';
-      toggle.setAttribute('aria-label', '원문 보기');
-      toggle.setAttribute('aria-controls', quote.id);
-      toggle.setAttribute('aria-expanded', 'false');
-      toggle.hidden = true;
-      const source = document.createElement('div');
-      source.className = 'amf-review-source';
-      source.textContent = review.source;
-      card.append(type, quote, toggle, source);
-      return card;
-    });
-    grid.prepend(...cards);
+    const page = 'psychology';
+    const updateToggle = (quote, button) => {
+      if (button.getAttribute('aria-expanded') === 'true') return;
+      button.hidden = quote.scrollHeight <= quote.clientHeight + 1;
+    };
+
+    fetch('/data/reviews.json?t=' + Date.now(), { cache: 'no-store' })
+      .then((response) => (response.ok ? response.json() : []))
+      .catch(() => [])
+      .then((reviews) => {
+        const cards = reviews.filter((review) => review.page === page).map((review) => {
+          const card = document.createElement('article');
+          card.className = 'amf-review-card';
+          const type = document.createElement('div');
+          type.className = 'amf-review-type';
+          type.textContent = review.type;
+          const quote = document.createElement('blockquote');
+          quote.className = 'amf-review-quote';
+          quote.id = 'saved-review-' + review.id;
+          quote.textContent = '\u201c' + review.text + '\u201d';
+          const toggle = document.createElement('button');
+          toggle.className = 'amf-review-toggle';
+          toggle.type = 'button';
+          toggle.setAttribute('aria-label', '원문 보기');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.hidden = true;
+          toggle.addEventListener('click', () => {
+            const expanded = toggle.getAttribute('aria-expanded') === 'true';
+            quote.classList.toggle('is-expanded', !expanded);
+            toggle.setAttribute('aria-expanded', String(!expanded));
+            toggle.setAttribute('aria-label', expanded ? '원문 보기' : '접기');
+          });
+          const source = document.createElement('div');
+          source.className = 'amf-review-source';
+          source.textContent = review.source;
+          card.append(type, quote, toggle, source);
+          card._update = () => updateToggle(quote, toggle);
+          return card;
+        });
+        if (!cards.length) return;
+        grid.prepend(...cards);
+        cards.forEach((card) => card._update());
+        window.addEventListener('resize', () => cards.forEach((card) => card._update()));
+      });
   })();
 </script>
 
