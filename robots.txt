@@ -1,3 +1,7 @@
+User-agent: Yeti
+Allow: /
+Disallow: /notice-admin/
+
 User-agent: *
 Allow: /
 Disallow: /notice-admin/
